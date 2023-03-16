@@ -1,16 +1,25 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import GlobalStyle from "./GlobalStyle";
 import Header from "./Components/Header";
 import MainPage from "./Pages/MainPage";
 import TodayList from "./Pages/TodayList";
 import TodayEnd from "./Pages/TodayEnd";
 import History from "./Pages/History";
 import NavBar from "./Components/NavBar";
+import styled from "styled-components";
+
+const MainContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  position: relative;
+`;
 
 const App = () => {
   return (
-    <>
-      <GlobalStyle />
+    <MainContainer>
       <Router>
         <Header />
         <NavBar />
@@ -21,7 +30,7 @@ const App = () => {
           <Route path="/history" element={<History />} />
         </Routes>
       </Router>
-    </>
+    </MainContainer>
   );
 };
 

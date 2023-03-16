@@ -8,9 +8,15 @@ const GlobalStyle = createGlobalStyle`
 
   body {
     height : 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
   #root{
-    height:100%;
+    width : 80%;
+    height:80%;
+    overflow: hidden;
   }
 `;
 

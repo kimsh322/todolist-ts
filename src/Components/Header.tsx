@@ -4,11 +4,12 @@ const HeaderContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100%;
   height: 15%;
   background-color: beige;
 
   h1 {
-    font-size: 6rem;
+    font-size: 5rem;
   }
   button {
     position: absolute;
