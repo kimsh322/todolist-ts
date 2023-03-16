@@ -1,26 +1,28 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import GlobalStyle from "./GlobalStyle";
+import Header from "./Components/Header";
+import MainPage from "./Pages/MainPage";
+import TodayList from "./Pages/TodayList";
+import TodayEnd from "./Pages/TodayEnd";
+import History from "./Pages/History";
+import NavBar from "./Components/NavBar";
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <GlobalStyle />
+      <Router>
+        <Header />
+        <NavBar />
+        <Routes>
+          <Route path="/" element={<MainPage />} />
+          <Route path="/todayList" element={<TodayList />} />
+          <Route path="/todayEnd" element={<TodayEnd />} />
+          <Route path="/history" element={<History />} />
+        </Routes>
+      </Router>
+    </>
   );
-}
+};
 
 export default App;
