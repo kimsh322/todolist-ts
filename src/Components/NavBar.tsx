@@ -13,6 +13,7 @@ const NavBarContainer = styled.div`
   position: absolute;
   width: 10%;
   height: 100%;
+  z-index: 1;
   left: ${(props: PropsType) => {
     return props.isClick ? "0" : "-10%";
   }};

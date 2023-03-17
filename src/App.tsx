@@ -1,11 +1,8 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router } from "react-router-dom";
 import Header from "./Components/Header";
-import MainPage from "./Pages/MainPage";
-import TodayList from "./Pages/TodayList";
-import TodayEnd from "./Pages/TodayEnd";
-import History from "./Pages/History";
 import NavBar from "./Components/NavBar";
 import styled from "styled-components";
+import Transition from "./Components/Transition";
 
 const MainContainer = styled.div`
   display: flex;
@@ -23,12 +20,7 @@ const App = () => {
       <Router>
         <Header />
         <NavBar />
-        <Routes>
-          <Route path="/" element={<MainPage />} />
-          <Route path="/todayList" element={<TodayList />} />
-          <Route path="/todayEnd" element={<TodayEnd />} />
-          <Route path="/history" element={<History />} />
-        </Routes>
+        <Transition />
       </Router>
     </MainContainer>
   );

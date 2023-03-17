@@ -9,7 +9,7 @@ const HeaderContainer = styled.div`
   background-color: beige;
 
   h1 {
-    font-size: 5rem;
+    font-size: 5em;
   }
   button {
     position: absolute;
