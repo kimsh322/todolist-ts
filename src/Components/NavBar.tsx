@@ -37,21 +37,26 @@ const NavBar = () => {
   const navHandler = () => {
     setIsClick(!isClick);
   };
+
+  const hideNavBar = () => {
+    setIsClick(false);
+  };
+
   return (
     <NavBarContainer isClick={isClick}>
       <button id="open" onClick={navHandler}>
         누르기
       </button>
-      <button className="link-to">
+      <button className="link-to" onClick={hideNavBar}>
         <Link to="/">메인페이지</Link>
       </button>
-      <button className="link-to">
+      <button className="link-to" onClick={hideNavBar}>
         <Link to="/todayList">오늘 할 일</Link>
       </button>
-      <button className="link-to">
+      <button className="link-to" onClick={hideNavBar}>
         <Link to="/todayEnd">오늘 정산</Link>
       </button>
-      <button className="link-to">
+      <button className="link-to" onClick={hideNavBar}>
         <Link to="/history">지금까지 한 것</Link>
       </button>
     </NavBarContainer>

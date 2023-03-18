@@ -8,10 +8,11 @@ const MainContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
+  width: 80%;
   height: 100%;
   flex-direction: column;
   position: relative;
+  overflow: hidden;
 `;
 
 const App = () => {

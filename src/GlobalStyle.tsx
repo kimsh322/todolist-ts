@@ -16,7 +16,8 @@ const GlobalStyle = createGlobalStyle`
   #root{
     width : 80%;
     height:80%;
-    overflow: hidden;
+    display: flex;
+    justify-content: center;
   }
 `;
 

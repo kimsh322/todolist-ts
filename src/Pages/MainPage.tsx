@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import runningImg from "../img/running.jpg";
 
 const MainPageContainer = styled.div`
   display: flex;
@@ -6,14 +7,34 @@ const MainPageContainer = styled.div`
   align-items: center;
   width: 100%;
   height: 100%;
-  background-color: aqua;
   position: relative;
+  background-image: url(${runningImg});
+  background-size: 100%;
+  .box {
+    width: 80%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .running-image {
+    width: 50%;
+    height: 50%;
+  }
 `;
 
 const MainPage = () => {
   return (
     <MainPageContainer>
-      <div>메인페이지입니당</div>
+      <div className="box">
+        <h2>오늘은 3월 18일 입니다.</h2>
+        <p>오늘 서울 날씨는 맑음</p>
+        <p>최저온도 10도, 최고온도 20도 입니다.</p>
+        <p>지금까지 작성한 TodoList는 총 10개입니다!</p>
+        <p>오늘도 열심히 달려봅시다!</p>
+      </div>
     </MainPageContainer>
   );
 };

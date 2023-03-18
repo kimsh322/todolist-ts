@@ -40,6 +40,7 @@ const TransitionDiv = styled.div`
 
 const Transition = () => {
   const location = useLocation();
+
   return (
     <TransitionDiv>
       <TransitionGroup className="transition-group">
