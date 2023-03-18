@@ -1,5 +1,14 @@
+import { useState } from "react";
 import styled from "styled-components";
+import TypeIt from "typeit-react";
 
+interface Props {
+  headText: string;
+  loading: boolean;
+}
+interface TypeitProps {
+  children: string;
+}
 const HeaderContainer = styled.div`
   display: flex;
   justify-content: center;
@@ -9,7 +18,7 @@ const HeaderContainer = styled.div`
   background-color: beige;
 
   h1 {
-    font-size: 5em;
+    font-size: 4em;
   }
   button {
     position: absolute;
@@ -19,10 +28,25 @@ const HeaderContainer = styled.div`
   }
 `;
 
-const Header = () => {
+const MainHead = ({ children }: TypeitProps) => {
+  return <h1 style={{ fontSize: "4em" }}>{children}</h1>;
+};
+
+const Header = ({ headText, loading }: Props) => {
   return (
     <HeaderContainer>
-      <h1>TodoList</h1>
+      {loading ? (
+        <TypeIt
+          options={{
+            cursor: false,
+            startDelay: 300,
+          }}
+        >
+          <MainHead>{headText}</MainHead>
+        </TypeIt>
+      ) : (
+        <div></div>
+      )}
       <button>달력</button>
     </HeaderContainer>
   );

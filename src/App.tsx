@@ -5,6 +5,7 @@ import styled from "styled-components";
 
 import { routes } from "./Components/router";
 import { CSSTransition, SwitchTransition } from "react-transition-group";
+import { useState } from "react";
 
 const MainContainer = styled.div`
   display: flex;
@@ -18,7 +19,7 @@ const MainContainer = styled.div`
 
   .fade {
     width: 100%;
-    height: 100%;
+    height: 85%;
   }
   .fade-enter {
     opacity: 0;
@@ -44,14 +45,20 @@ const MainContainer = styled.div`
 `;
 
 const App = () => {
+  const [headText, setHeadText] = useState<string>("TodoList");
+  const [loading, setLoading] = useState(true);
   const location = useLocation();
   const currentOutlet = useOutlet();
   const { nodeRef } =
     routes.find((route) => route.path === location.pathname) ?? {};
   return (
     <MainContainer>
-      <Header />
-      <NavBar />
+      <Header headText={headText} loading={loading} />
+      <NavBar
+        setHeadText={setHeadText}
+        setLoading={setLoading}
+        loading={loading}
+      />
       <SwitchTransition>
         <CSSTransition
           key={location.pathname}
