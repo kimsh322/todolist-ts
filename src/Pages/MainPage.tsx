@@ -9,7 +9,7 @@ const MainPageContainer = styled.div`
   height: 100%;
   position: relative;
   background-image: url(${runningImg});
-  background-size: 100%;
+  background-size: 100% 100%;
   .box {
     width: 80%;
     height: 80%;
@@ -17,11 +17,6 @@ const MainPageContainer = styled.div`
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-  }
-
-  .running-image {
-    width: 50%;
-    height: 50%;
   }
 `;
 
