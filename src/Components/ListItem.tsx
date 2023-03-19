@@ -1,8 +1,17 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
 interface Props {
   text: string;
 }
+
+const animation = keyframes`
+0% {
+  transform: scale( 1.5 );
+}
+100%{
+  transform: scale( 1 );
+}
+`;
 
 const ItemLi = styled.li`
   list-style: none;
@@ -14,6 +23,7 @@ const ItemLi = styled.li`
   flex-direction: column;
   justify-content: center;
   height: 3em;
+  animation: ${animation} 1s cubic-bezier(0.1, -0.6, 0.2, 0);
   span {
     margin-left: 10px;
     font-size: 1.5em;
