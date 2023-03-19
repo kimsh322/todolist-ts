@@ -46,7 +46,7 @@ const MainContainer = styled.div`
 
 const App = () => {
   const [headText, setHeadText] = useState<string>("TodoList");
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState<boolean>(true);
   const location = useLocation();
   const currentOutlet = useOutlet();
   const { nodeRef } =

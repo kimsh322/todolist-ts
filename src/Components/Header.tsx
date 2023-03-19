@@ -1,4 +1,3 @@
-import { useState } from "react";
 import styled from "styled-components";
 import TypeIt from "typeit-react";
 
@@ -39,7 +38,6 @@ const Header = ({ headText, loading }: Props) => {
         <TypeIt
           options={{
             cursor: false,
-            startDelay: 300,
           }}
         >
           <MainHead>{headText}</MainHead>

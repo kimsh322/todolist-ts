@@ -26,6 +26,15 @@ const NavBarContainer = styled.div`
   background-color: blueviolet;
   transition: 0.5s;
 
+  a {
+    display: inline-block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+  }
   #open {
     position: absolute;
     top: 50%;
