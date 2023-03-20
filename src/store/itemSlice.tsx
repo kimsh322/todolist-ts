@@ -2,16 +2,19 @@ import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 
 interface TodayList {
-  value: string[];
+  value: string;
+  done: boolean;
 }
-const initialState: TodayList = { value: [] };
+type TodayListArr = TodayList[];
+const initialState: TodayListArr = [];
 
 export const todayListSlice = createSlice({
   name: "todaylist",
   initialState,
   reducers: {
     setTodayList: (state, action: PayloadAction<string>) => {
-      state.value.push(action.payload);
+      let newObj: TodayList = { value: action.payload, done: false };
+      state.push(newObj);
     },
   },
 });

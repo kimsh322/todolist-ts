@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { routes } from "./router";
 
 interface StylePropsType {
   isClick: boolean;
@@ -48,18 +49,20 @@ const NavBarContainer = styled.div`
 
 const NavBar = ({ setHeadText, setLoading, loading }: Props) => {
   const [isClick, setIsClick] = useState<boolean>(false);
+  //NavBar on/off handler
   const navHandler = () => {
     setIsClick(!isClick);
   };
 
   const handleClick = (e: React.BaseSyntheticEvent) => {
     setIsClick(false);
+    // Typeit text 삽입 코드
     const head: string = e.target.innerText;
     if (head === "메인페이지") setHeadText("TodoList");
     else setHeadText(head);
     setLoading(!loading);
     setTimeout(() => {
-      setLoading((isloading) => !isloading);
+      setLoading((isloading) => !isloading); // 콜백함수로 setState 사용하기!
     }, 500);
   };
 
@@ -68,18 +71,13 @@ const NavBar = ({ setHeadText, setLoading, loading }: Props) => {
       <button id="open" onClick={navHandler}>
         누르기
       </button>
-      <button className="link-to" onClick={(e) => handleClick(e)}>
-        <Link to="/">메인페이지</Link>
-      </button>
-      <button className="link-to" onClick={(e) => handleClick(e)}>
-        <Link to="/todaylist">오늘 할 일</Link>
-      </button>
-      <button className="link-to" onClick={(e) => handleClick(e)}>
-        <Link to="/todayend">오늘 정산</Link>
-      </button>
-      <button className="link-to" onClick={(e) => handleClick(e)}>
-        <Link to="/history">지금까지 한 것</Link>
-      </button>
+      {routes.map((el) => {
+        return (
+          <button className="link-to" onClick={(e) => handleClick(e)}>
+            <Link to={el.path}>{el.name}</Link>
+          </button>
+        );
+      })}
     </NavBarContainer>
   );
 };

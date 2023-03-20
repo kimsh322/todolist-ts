@@ -26,7 +26,7 @@ const HeaderContainer = styled.div`
     height: 10%;
   }
 `;
-
+// typeit 폰트크기 조정
 const MainHead = ({ children }: TypeitProps) => {
   return <h1 style={{ fontSize: "4em" }}>{children}</h1>;
 };
