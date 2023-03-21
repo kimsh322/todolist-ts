@@ -46,7 +46,7 @@ const AddList = () => {
     setInputText(event.target.value);
   };
   // submit 버튼 handler
-  const handleClick = (event: React.BaseSyntheticEvent) => {
+  const handleAddClick = (event: React.BaseSyntheticEvent) => {
     event.preventDefault();
     if (inputText) {
       dispatch(setTodayList(inputText)); // item TodayList store에 저장
@@ -55,6 +55,7 @@ const AddList = () => {
   };
 
   return (
+    // form 태그
     <AddListContainer>
       <span className="add-box-text">할 일 추가 : </span>
       <input
@@ -62,7 +63,7 @@ const AddList = () => {
         value={inputText}
         onChange={(e) => handleTextChange(e)}
       />
-      <button className="add-button" onClick={(e) => handleClick(e)}>
+      <button className="add-button" onClick={(e) => handleAddClick(e)}>
         <img className="add-button-img" src={add_button} alt="add-button" />
       </button>
     </AddListContainer>

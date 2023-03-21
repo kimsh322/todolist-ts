@@ -14,12 +14,9 @@ const HeaderContainer = styled.div`
   align-items: center;
   width: 100%;
   height: 15%;
-  background-color: beige;
+  background-color: #408e91;
 
-  h1 {
-    font-size: 4em;
-  }
-  button {
+  .calender {
     position: absolute;
     right: 5px;
     width: 5%;
@@ -45,7 +42,7 @@ const Header = ({ headText, loading }: Props) => {
       ) : (
         <div></div>
       )}
-      <button>달력</button>
+      <button className="calender">달력</button>
     </HeaderContainer>
   );
 };

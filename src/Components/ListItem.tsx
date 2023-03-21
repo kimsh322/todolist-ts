@@ -1,7 +1,10 @@
 import styled, { keyframes } from "styled-components";
+import { removeTodayList } from "../store/itemSlice";
+import { useAppDispatch } from "../store/reduxHooks";
 
 interface Props {
   text: string;
+  idx: number;
 }
 
 const animation = keyframes`
@@ -35,14 +38,23 @@ const ItemLi = styled.li`
     color: white;
     position: absolute;
     right: 20px;
+    &:hover {
+      background-color: #831212;
+    }
   }
 `;
 
-const ListItem = ({ text }: Props) => {
+const ListItem = ({ text, idx }: Props) => {
+  const dispatch = useAppDispatch();
+  const handleRemoveClick = () => {
+    dispatch(removeTodayList(idx));
+  };
   return (
     <ItemLi>
       <span>{text}</span>
-      <button className="remove">삭제</button>
+      <button className="remove" onClick={handleRemoveClick}>
+        삭제
+      </button>
     </ItemLi>
   );
 };

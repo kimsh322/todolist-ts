@@ -16,7 +16,14 @@ export const todayListSlice = createSlice({
       let newObj: TodayList = { value: action.payload, done: false };
       state.push(newObj);
     },
+    removeTodayList: (state, action: PayloadAction<number>) => {
+      // 새로운 state 값을 만들면 return 해줘야한다.
+      return state.filter((el, idx) => {
+        if (idx === action.payload) return false;
+        return true;
+      });
+    },
   },
 });
 
-export const { setTodayList } = todayListSlice.actions;
+export const { setTodayList, removeTodayList } = todayListSlice.actions;

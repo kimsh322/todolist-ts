@@ -54,7 +54,7 @@ const NavBar = ({ setHeadText, setLoading, loading }: Props) => {
     setIsClick(!isClick);
   };
 
-  const handleClick = (e: React.BaseSyntheticEvent) => {
+  const handleLinkClick = (e: React.BaseSyntheticEvent) => {
     setIsClick(false);
     // Typeit text 삽입 코드
     const head: string = e.target.innerText;
@@ -73,7 +73,11 @@ const NavBar = ({ setHeadText, setLoading, loading }: Props) => {
       </button>
       {routes.map((el) => {
         return (
-          <button className="link-to" onClick={(e) => handleClick(e)}>
+          <button
+            key={el.path}
+            className="link-to"
+            onClick={(e) => handleLinkClick(e)}
+          >
             <Link to={el.path}>{el.name}</Link>
           </button>
         );

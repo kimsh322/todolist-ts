@@ -33,7 +33,7 @@ const TodayList = () => {
       <AddList />
       <ul className="list-box">
         {todayList.map((el, idx) => {
-          return <ListItem key={idx} text={el.value} />;
+          return <ListItem key={idx} text={el.value} idx={idx} />;
         })}
       </ul>
     </TodayListContainer>
