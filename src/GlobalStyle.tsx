@@ -5,6 +5,11 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
     margin : 0;
   }
+  @media screen and (max-width: 900px) {
+    * {
+      font-size: 12px;
+    }
+  }
 
   body {
     height : 100vh;
@@ -18,6 +23,16 @@ const GlobalStyle = createGlobalStyle`
     height:80%;
     display: flex;
     justify-content: center;
+  }
+  @media screen and (max-height: 700px) {
+    #root {
+      height: 100%;
+    }
+  }
+  @media screen and (max-width: 900px) {
+    #root {
+      width: 100%;
+    }
   }
 `;
 

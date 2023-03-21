@@ -14,6 +14,7 @@ const TodayListContainer = styled.ul`
   height: 100%;
   background-color: yellow;
   position: relative;
+  padding-left: 0;
 
   .list-box {
     width: 70%;

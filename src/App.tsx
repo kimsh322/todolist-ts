@@ -16,6 +16,9 @@ const MainContainer = styled.div`
   flex-direction: column;
   position: relative;
   overflow: hidden;
+  @media screen and (max-width: 900px) {
+    width: 100%;
+  }
 
   .fade {
     width: 100%;
