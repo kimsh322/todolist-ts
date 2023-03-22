@@ -1,20 +1,16 @@
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
 import { removeTodayList } from "../store/itemSlice";
 import { useAppDispatch } from "../store/reduxHooks";
+import "animate.css";
+import { useState } from "react";
 
 interface Props {
   text: string;
   idx: number;
 }
-
-const animation = keyframes`
-0% {
-  transform: scale( 1.5 );
+interface StyleProps {
+  isRemove: boolean;
 }
-100%{
-  transform: scale( 1 );
-}
-`;
 
 const ItemLi = styled.li`
   list-style: none;
@@ -26,10 +22,15 @@ const ItemLi = styled.li`
   flex-direction: column;
   justify-content: center;
   height: 3em;
-  animation: ${animation} 1s cubic-bezier(0.1, -0.6, 0.2, 0);
+  animation: ${({ isRemove }: StyleProps) =>
+      isRemove ? "flipOutX" : "flipInX"}
+    1s;
   span {
+    display: flex;
+    align-items: center;
     margin-left: 10px;
     font-size: 1.5em;
+    height: 2em;
   }
   .remove {
     width: 10%;
@@ -46,11 +47,17 @@ const ItemLi = styled.li`
 
 const ListItem = ({ text, idx }: Props) => {
   const dispatch = useAppDispatch();
-  const handleRemoveClick = () => {
+  const [isRemove, setIsRemove] = useState<boolean>(false);
+  const timeoutFunc = () => {
     dispatch(removeTodayList(idx));
+    setIsRemove(false);
+  };
+  const handleRemoveClick = () => {
+    setIsRemove(true);
+    setTimeout(() => timeoutFunc(), 1000);
   };
   return (
-    <ItemLi>
+    <ItemLi isRemove={isRemove}>
       <span>{text}</span>
       <button className="remove" onClick={handleRemoveClick}>
         삭제
