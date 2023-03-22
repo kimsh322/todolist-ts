@@ -24,9 +24,10 @@ const GlobalStyle = createGlobalStyle`
     display: flex;
     justify-content: center;
   }
-  @media screen and (max-height: 700px) {
+  @media screen and (max-height: 500px) {
     #root {
       height: 100%;
+      font-size: 12px;
     }
   }
   @media screen and (max-width: 900px) {

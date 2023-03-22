@@ -13,20 +13,21 @@ const CalenderHeaderContainer = styled.div`
   border-radius: 10px;
 
   .month {
-    font-size: 3em;
+    font-size: 1em;
   }
 
   @media screen and (max-width: 900px) {
     .month {
-      font-size: 2em;
+      font-size: 0.5em;
     }
   }
   .year-box {
     position: absolute;
-    left: 1%;
-    top: 40%;
-    font-size: 1.5em;
+    left: 2%;
+    font-size: 1em;
     display: flex;
+    height: 100%;
+    align-items: center;
   }
   .date {
     margin: 0 6%;
@@ -51,23 +52,23 @@ interface Props {
   nextMonth: () => void;
 }
 
-const CalenderHeader = ({ curMonth, prevMonth, nextMonth }: Props) => {
+const MiniCalenderHeader = ({ curMonth, prevMonth, nextMonth }: Props) => {
   return (
     <CalenderHeaderContainer>
       <div className="year-box">
         <span className="year">{format(curMonth, "yyyy")}</span>
       </div>
       <button className="prev-month" onClick={() => prevMonth()}>
-        <HiArrowCircleLeft size={50} />
+        <HiArrowCircleLeft size={20} />
       </button>
       <div className="date">
         <span className="month">{format(curMonth, "M")}월</span>
       </div>
       <button className="next-month" onClick={() => nextMonth()}>
-        <HiArrowCircleRight size={50} />
+        <HiArrowCircleRight size={20} />
       </button>
     </CalenderHeaderContainer>
   );
 };
 
-export default CalenderHeader;
+export default MiniCalenderHeader;

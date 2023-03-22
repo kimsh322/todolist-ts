@@ -1,7 +1,5 @@
 import styled from "styled-components";
-
 import { useAppSelector } from "../store/reduxHooks";
-
 import ListItem from "../Components/ListItem";
 import AddList from "../Components/AddList";
 

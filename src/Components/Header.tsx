@@ -1,5 +1,8 @@
 import styled from "styled-components";
 import TypeIt from "typeit-react";
+import { SlCalender } from "react-icons/sl";
+import { useState } from "react";
+import ModalCalender from "./MiniCalender/ModalCalender";
 
 interface Props {
   headText: string;
@@ -19,8 +22,8 @@ const HeaderContainer = styled.div`
   .calender {
     position: absolute;
     right: 5px;
-    width: 5%;
-    height: 10%;
+    width: 4em;
+    height: 4em;
   }
 `;
 // typeit 폰트크기 조정
@@ -29,6 +32,12 @@ const MainHead = ({ children }: TypeitProps) => {
 };
 
 const Header = ({ headText, loading }: Props) => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const openModalHandler = () => {
+    isOpen ? setIsOpen(false) : setIsOpen(true);
+  };
+
   return (
     <HeaderContainer>
       {loading ? (
@@ -42,7 +51,8 @@ const Header = ({ headText, loading }: Props) => {
       ) : (
         <div></div>
       )}
-      <button className="calender">달력</button>
+      <SlCalender className="calender" onClick={() => openModalHandler()} />
+      <ModalCalender isOpen={isOpen} setIsOpen={setIsOpen} />
     </HeaderContainer>
   );
 };
