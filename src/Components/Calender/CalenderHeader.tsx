@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { format } from "date-fns";
-import nextIcon from "../../img/next-icon.png";
-import prevIcon from "../../img/prev-icon.png";
+import { HiArrowCircleLeft } from "react-icons/hi";
+import { HiArrowCircleRight } from "react-icons/hi";
 
 const CalenderHeaderContainer = styled.div`
   display: flex;
@@ -62,13 +62,13 @@ const CalenderHeader = ({ curMonth, prevMonth, nextMonth }: Props) => {
         <span className="year">{format(new Date(), "yyyy")}</span>
       </div>
       <button className="prev-month" onClick={() => prevMonth()}>
-        <img src={prevIcon} alt="prevIcon" />
+        <HiArrowCircleLeft size={50} />
       </button>
       <div className="date">
         <span className="month">{format(curMonth, "M")}월</span>
       </div>
       <button className="next-month" onClick={() => nextMonth()}>
-        <img src={nextIcon} alt="nextIcon" />
+        <HiArrowCircleRight size={50} />
       </button>
     </CalenderHeaderContainer>
   );
