@@ -36,6 +36,10 @@ const DaysContainer = styled.div`
         opacity: 0.2;
       }
     }
+    .today {
+      border: 1px solid red;
+      background-color: #ffbf9b;
+    }
   }
 `;
 
@@ -56,11 +60,22 @@ const CalenderDays = ({ curMonth, selectedDate }: Props) => {
   let formatDate = "";
   let key = 0;
 
+  const isToday = (a: Date, b: Date) => {
+    return (
+      format(a, "d") === format(b, "d") &&
+      format(a, "M") === format(new Date(), "M") &&
+      format(a, "Y") === format(new Date(), "Y")
+    );
+  };
+
   while (day <= endDate) {
     for (let i = 0; i < 7; i++) {
       formatDate = format(day, "d");
       week.push(
-        <div key={formatDate} className="cell">
+        <div
+          key={formatDate}
+          className={`cell ${isToday(curMonth, day) ? "today" : ""}`}
+        >
           <span
             className={
               format(curMonth, "M") !== format(day, "M") ? "not-valid" : ""

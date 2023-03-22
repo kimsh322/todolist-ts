@@ -9,26 +9,26 @@ import App from "../App";
 export const routes = [
   {
     path: "/",
-    name: "메인페이지",
+    name: "TodoList",
     element: <MainPage />,
     nodeRef: createRef<HTMLDivElement>(),
   },
   {
     path: "/todaylist",
-    name: "오늘 할 일",
+    name: "TodaySetup",
     element: <TodayList />,
     nodeRef: createRef<HTMLDivElement>(),
   },
   {
     path: "/todayend",
-    name: "오늘 정산",
+    name: "Confirm",
     element: <TodayEnd />,
     nodeRef: createRef<HTMLDivElement>(),
   },
 
   {
     path: "/history",
-    name: "지금까지 한것",
+    name: "History",
     element: <History />,
     nodeRef: createRef<HTMLDivElement>(),
   },

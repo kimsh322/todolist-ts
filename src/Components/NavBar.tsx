@@ -58,8 +58,7 @@ const NavBar = ({ setHeadText, setLoading, loading }: Props) => {
     setIsClick(false);
     // Typeit text 삽입 코드
     const head: string = e.target.innerText;
-    if (head === "메인페이지") setHeadText("TodoList");
-    else setHeadText(head);
+    setHeadText(head);
     setLoading(!loading);
     setTimeout(() => {
       setLoading((isloading) => !isloading); // 콜백함수로 setState 사용하기!

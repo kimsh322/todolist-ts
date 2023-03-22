@@ -59,7 +59,7 @@ const CalenderHeader = ({ curMonth, prevMonth, nextMonth }: Props) => {
   return (
     <CalenderHeaderContainer>
       <div className="year-box">
-        <span className="year">{format(new Date(), "yyyy")}</span>
+        <span className="year">{format(curMonth, "yyyy")}</span>
       </div>
       <button className="prev-month" onClick={() => prevMonth()}>
         <HiArrowCircleLeft size={50} />
