@@ -1,7 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
+import { v4 as uuid } from "uuid";
 
 interface TodayList {
+  key: string;
   value: string;
   done: boolean;
 }
@@ -13,7 +15,11 @@ export const todayListSlice = createSlice({
   initialState,
   reducers: {
     setTodayList: (state, action: PayloadAction<string>) => {
-      let newObj: TodayList = { value: action.payload, done: false };
+      let newObj: TodayList = {
+        key: uuid(),
+        value: action.payload,
+        done: false,
+      };
       state.push(newObj);
     },
     removeTodayList: (state, action: PayloadAction<number>) => {

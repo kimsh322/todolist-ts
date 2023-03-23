@@ -24,7 +24,7 @@ const ItemLi = styled.li`
   height: 3em;
   animation: ${({ isRemove }: StyleProps) =>
       isRemove ? "flipOutX" : "flipInX"}
-    1s;
+    0.5s;
   span {
     display: flex;
     align-items: center;
@@ -54,7 +54,7 @@ const ListItem = ({ text, idx }: Props) => {
   };
   const handleRemoveClick = () => {
     setIsRemove(true);
-    setTimeout(() => timeoutFunc(), 1000);
+    setTimeout(() => timeoutFunc(), 500);
   };
   return (
     <ItemLi isRemove={isRemove}>

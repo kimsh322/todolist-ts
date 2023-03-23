@@ -28,14 +28,13 @@ const TodayListContainer = styled.ul`
 
 const TodayList = () => {
   const todayList = useAppSelector((state) => state.todayList);
-
   return (
     <TodayListContainer>
       <Today />
       <AddList />
       <ul className="list-box">
         {todayList.map((el, idx) => {
-          return <ListItem key={idx} text={el.value} idx={idx} />;
+          return <ListItem key={el.key} text={el.value} idx={idx} />;
         })}
       </ul>
     </TodayListContainer>

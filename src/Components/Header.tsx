@@ -21,6 +21,7 @@ const HeaderContainer = styled.div`
 
   .calender {
     position: absolute;
+    cursor: pointer;
     right: 5px;
     width: 4em;
     height: 4em;
