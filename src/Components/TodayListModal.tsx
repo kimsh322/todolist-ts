@@ -50,7 +50,7 @@ const TodayListModal = ({ isOpen, setIsOpen }: Props) => {
     <ModalContainer>
       {isOpen ? (
         <ModalBackdrop onClick={closeModalHandler}>
-          <ModalView onClick={(e) => e.stopPropagation()}>
+          <ModalView>
             <span>확정되었습니다!</span>
           </ModalView>
         </ModalBackdrop>

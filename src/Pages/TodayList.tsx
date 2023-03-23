@@ -60,6 +60,7 @@ const TodayList = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleSubmit = () => {
+    if (todayList.length === 0) return;
     setIsOpen(true);
     localStorage.setItem(format(new Date(), "P"), JSON.stringify(todayList));
   };
