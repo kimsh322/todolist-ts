@@ -23,15 +23,16 @@ const MainContainer = styled.div`
   .fade {
     width: 100%;
     height: 85%;
+    border: 5px solid black;
   }
   .fade-enter {
     opacity: 0;
-    transform: translateX(100%);
+    transform: translateY(100%);
   }
 
   .fade-enter-active {
     opacity: 1;
-    transform: translateX(0%);
+    transform: translateY(0%);
     transition: all 0.5s ease-in;
   }
 
@@ -42,7 +43,7 @@ const MainContainer = styled.div`
 
   .fade-exit-active {
     opacity: 0;
-    transform: translateX(-100%);
+    transform: translateX(100%);
     transition: all 0.5s ease-in;
   }
 `;
