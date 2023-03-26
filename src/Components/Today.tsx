@@ -5,8 +5,7 @@ const TodayContainer = styled.div`
   display: flex;
   flex-direction: column;
   background-color: beige;
-  width: 100px;
-  height: 100px;
+  width: 12%;
   position: absolute;
   right: 10px;
   top: 10px;
@@ -19,7 +18,6 @@ const TodayContainer = styled.div`
     align-items: center;
     background-color: red;
     width: 100%;
-    height: 40%;
     .month {
       color: white;
       font-size: 2em;
@@ -29,7 +27,6 @@ const TodayContainer = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 60%;
   }
   .day {
     font-size: 3em;

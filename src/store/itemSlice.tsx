@@ -8,8 +8,8 @@ interface TodayList {
   done: boolean;
 }
 type TodayListArr = TodayList[];
-const initialState: TodayListArr = [];
 
+const initialState: TodayListArr = [];
 export const todayListSlice = createSlice({
   name: "todaylist",
   initialState,

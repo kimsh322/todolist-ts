@@ -33,17 +33,35 @@ const ItemLi = styled.li`
 
 interface Props {
   text: string;
-  done: boolean;
   idx: number;
+  setTodayConfirmList: React.Dispatch<React.SetStateAction<TodayListArr>>;
+  todayConfirmList: TodayListArr;
 }
 interface StyleProps {
   isChecked: boolean;
 }
 
-const ConfirmList = ({ text, done, idx }: Props) => {
+interface TodayList {
+  key: string;
+  value: string;
+  done: boolean;
+}
+type TodayListArr = TodayList[];
+
+const ConfirmList = ({
+  text,
+  idx,
+  todayConfirmList,
+  setTodayConfirmList,
+}: Props) => {
   const [isChecked, setIsChecked] = useState(false);
   const handleChange = () => {
     setIsChecked(!isChecked);
+    let newArr = todayConfirmList.map((el, index) => {
+      if (idx === index) el.done = !el.done;
+      return el;
+    });
+    setTodayConfirmList(newArr);
   };
   return (
     <ItemLi isChecked={isChecked}>

@@ -42,11 +42,13 @@ const AddListContainer = styled.form`
 const AddList = () => {
   const [inputText, setInputText] = useState<string>("");
   const dispatch = useAppDispatch();
-  const handleTextChange = (event: React.BaseSyntheticEvent) => {
+  const handleTextChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setInputText(event.target.value);
   };
   // submit 버튼 handler
-  const handleAddClick = (event: React.BaseSyntheticEvent) => {
+  const handleAddClick = (
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => {
     event.preventDefault();
     if (inputText) {
       dispatch(setTodayList(inputText)); // item TodayList store에 저장

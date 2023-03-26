@@ -32,9 +32,9 @@ const MainPage = () => {
   return (
     <MainPageContainer>
       <div className="box">
+        <p>로그인 페이지 만들면 되겠다!</p>
         <p>여기는 무슨 내용을 적을지 고민이된다.</p>
         <p>어떤걸 적으면 잘적었다고 소문이 날까 </p>
-        <p>그냥 대문페이지는 없는게 낫나??</p>
       </div>
     </MainPageContainer>
   );

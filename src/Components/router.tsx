@@ -15,13 +15,13 @@ export const routes = [
   },
   {
     path: "/todaylist",
-    name: "TodayList",
+    name: "오늘 할 일",
     element: <TodayList />,
     nodeRef: createRef<HTMLDivElement>(),
   },
   {
     path: "/todayend",
-    name: "TodayEnd",
+    name: "정산하기",
     element: <TodayEnd />,
     nodeRef: createRef<HTMLDivElement>(),
   },
