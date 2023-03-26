@@ -4,10 +4,7 @@ import {
   endOfMonth,
   startOfWeek,
   endOfWeek,
-  isSameMonth,
-  isSameDay,
   addDays,
-  parse,
   format,
 } from "date-fns";
 
@@ -64,6 +61,7 @@ const CalenderDays = ({ curMonth, selectedDate }: Props) => {
     return (
       format(a, "d") === format(b, "d") &&
       format(a, "M") === format(new Date(), "M") &&
+      format(a, "M") === format(b, "M") &&
       format(a, "Y") === format(new Date(), "Y")
     );
   };

@@ -27,7 +27,7 @@ const MainContainer = styled.div`
   }
   .fade-enter {
     opacity: 0;
-    transform: translateY(100%);
+    transform: rotate3d(1, 0, 0, -1.57rad);
   }
 
   .fade-enter-active {
@@ -38,12 +38,12 @@ const MainContainer = styled.div`
 
   .fade-exit {
     opacity: 1;
-    transform: translateX(0%);
+    /* transform: translateX(0%); */
   }
 
   .fade-exit-active {
     opacity: 0;
-    transform: translateX(100%);
+    transform: rotate3d(1, 0, 0, 1.57rad);
     transition: all 0.5s ease-in;
   }
 `;

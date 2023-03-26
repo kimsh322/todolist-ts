@@ -39,22 +39,25 @@ interface TodayList {
 type TodayListArr = TodayList[];
 
 const TodayEnd = () => {
-  const todayConfirmList: TodayListArr = JSON.parse(
-    localStorage.getItem(format(new Date(), "P"))!
-  );
+  const TodayItems = localStorage.getItem(format(new Date(), "P"));
+  const todayConfirmList: TodayListArr = TodayItems
+    ? JSON.parse(TodayItems)
+    : [];
   return (
     <TodayEndContainer>
       <ul className="list-box">
-        {todayConfirmList.map((el, idx) => {
-          return (
-            <ConfirmList
-              key={el.key}
-              text={el.value}
-              done={el.done}
-              idx={idx}
-            />
-          );
-        })}
+        {todayConfirmList.length !== 0
+          ? todayConfirmList.map((el, idx) => {
+              return (
+                <ConfirmList
+                  key={el.key}
+                  text={el.value}
+                  done={el.done}
+                  idx={idx}
+                />
+              );
+            })
+          : null}
       </ul>
       <div className="textarea-container">
         <label htmlFor="story">메모적기</label>

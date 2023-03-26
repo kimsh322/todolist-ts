@@ -54,9 +54,7 @@ const TodayListModal = ({ isOpen, setIsOpen }: Props) => {
             <span>확정되었습니다!</span>
           </ModalView>
         </ModalBackdrop>
-      ) : (
-        ""
-      )}
+      ) : null}
     </ModalContainer>
   );
 };
