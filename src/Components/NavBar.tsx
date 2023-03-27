@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { routes } from "./router";
@@ -10,6 +9,8 @@ interface Props {
   setHeadText: React.Dispatch<React.SetStateAction<string>>;
   setLoading: React.Dispatch<React.SetStateAction<boolean>>;
   loading: boolean;
+  isClick: boolean;
+  setIsClick: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const NavBarContainer = styled.div`
@@ -17,11 +18,11 @@ const NavBarContainer = styled.div`
   flex-direction: column;
   justify-content: space-around;
   position: absolute;
-  width: 10%;
+  width: 15%;
   height: 100%;
   z-index: 1;
   left: ${(props: StylePropsType) => {
-    return props.isClick ? "0" : "-10%";
+    return props.isClick ? "0" : "-15%";
   }};
   top: 0;
   background-color: blueviolet;
@@ -36,24 +37,19 @@ const NavBarContainer = styled.div`
     height: 100%;
     text-decoration: none;
   }
-  #open {
-    position: absolute;
-    top: 50%;
-    right: -50px;
-  }
   .link-to {
     width: 100%;
     height: 10%;
   }
 `;
 
-const NavBar = ({ setHeadText, setLoading, loading }: Props) => {
-  const [isClick, setIsClick] = useState<boolean>(false);
-  //NavBar on/off handler
-  const navHandler = () => {
-    setIsClick(!isClick);
-  };
-
+const NavBar = ({
+  setHeadText,
+  setLoading,
+  loading,
+  isClick,
+  setIsClick,
+}: Props) => {
   const handleLinkClick = (e: React.BaseSyntheticEvent) => {
     setIsClick(false);
     // Typeit text 삽입 코드
@@ -67,9 +63,6 @@ const NavBar = ({ setHeadText, setLoading, loading }: Props) => {
 
   return (
     <NavBarContainer isClick={isClick}>
-      <button id="open" onClick={navHandler}>
-        누르기
-      </button>
       {routes.map((el) => {
         return (
           <button

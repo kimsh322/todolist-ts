@@ -1,12 +1,15 @@
 import styled from "styled-components";
 import TypeIt from "typeit-react";
 import { SlCalender } from "react-icons/sl";
+import { GiHamburgerMenu } from "react-icons/gi";
 import { useState } from "react";
 import ModalCalender from "./MiniCalender/ModalCalender";
 
 interface Props {
   headText: string;
   loading: boolean;
+  isClick: boolean;
+  setIsClick: React.Dispatch<React.SetStateAction<boolean>>;
 }
 interface TypeitProps {
   children: string;
@@ -19,10 +22,18 @@ const HeaderContainer = styled.div`
   height: 15%;
   background-color: #408e91;
 
+  .menu {
+    position: absolute;
+    left: 3%;
+    width: 3em;
+    height: 3em;
+    cursor: pointer;
+  }
+
   .calender {
     position: absolute;
     cursor: pointer;
-    right: 5px;
+    right: 2%;
     width: 4em;
     height: 4em;
   }
@@ -32,8 +43,13 @@ const MainHead = ({ children }: TypeitProps) => {
   return <h1 style={{ fontSize: "4em" }}>{children}</h1>;
 };
 
-const Header = ({ headText, loading }: Props) => {
+const Header = ({ headText, loading, isClick, setIsClick }: Props) => {
   const [isOpen, setIsOpen] = useState(false);
+
+  //NavBar on/off handler
+  const navHandler = () => {
+    setIsClick(!isClick);
+  };
 
   const openModalHandler = () => {
     isOpen ? setIsOpen(false) : setIsOpen(true);
@@ -41,6 +57,7 @@ const Header = ({ headText, loading }: Props) => {
 
   return (
     <HeaderContainer>
+      <GiHamburgerMenu className="menu" onClick={navHandler} />
       {loading ? (
         <TypeIt
           options={{

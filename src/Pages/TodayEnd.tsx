@@ -4,6 +4,7 @@ import ConfirmList from "../Components/ConfirmList";
 import { doc, setDoc } from "firebase/firestore";
 import { db } from "../FireBase/firebase";
 import { useState } from "react";
+import Today from "../Components/Today";
 
 const TodayEndContainer = styled.div`
   display: flex;
@@ -88,6 +89,7 @@ const TodayEnd = () => {
 
   return (
     <TodayEndContainer>
+      <Today />
       <ul className="list-box">
         {todayConfirmList.length !== 0
           ? todayConfirmList.map((el, idx) => {
