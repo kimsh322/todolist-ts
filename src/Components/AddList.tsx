@@ -10,7 +10,8 @@ const AddListContainer = styled.form`
   align-items: center;
   width: 70%;
   height: 10%;
-  background-color: skyblue;
+  background-color: #b46060;
+  border-radius: 10px 10px 0 0;
   .add-box-text {
     margin-left: 1em;
     font-size: 1.5em;

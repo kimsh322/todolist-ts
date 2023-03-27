@@ -26,7 +26,7 @@ const ItemLi = styled.li`
     display: flex;
     align-items: center;
     margin-left: 10px;
-    font-size: 1.5em;
+    font-size: 1.8em;
     height: 2em;
   }
 `;

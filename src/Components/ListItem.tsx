@@ -3,6 +3,7 @@ import { removeTodayList } from "../store/itemSlice";
 import { useAppDispatch } from "../store/reduxHooks";
 import "animate.css";
 import { useState } from "react";
+import { TbXboxX } from "react-icons/tb";
 
 interface Props {
   text: string;
@@ -17,7 +18,8 @@ const ItemLi = styled.li`
   position: relative;
   margin: 10px 10px 10px 50px;
   border-radius: 10px;
-  background-color: blueviolet;
+  background-color: #fff4e0;
+  color: black;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -29,18 +31,18 @@ const ItemLi = styled.li`
     display: flex;
     align-items: center;
     margin-left: 10px;
-    font-size: 1.5em;
+    font-size: 1.8em;
     height: 2em;
   }
   .remove {
     width: 10%;
     height: 80%;
-    background-color: #b42a2a;
-    color: white;
+    background-color: transparent;
+    color: red;
     position: absolute;
     right: 20px;
     &:hover {
-      background-color: #831212;
+      cursor: pointer;
     }
   }
 `;
@@ -59,9 +61,10 @@ const ListItem = ({ text, idx }: Props) => {
   return (
     <ItemLi isRemove={isRemove}>
       <span>{text}</span>
-      <button className="remove" onClick={handleRemoveClick}>
-        삭제
-      </button>
+      <TbXboxX className="remove" onClick={handleRemoveClick} />
+      {/* <button className="remove" >
+        X
+      </button> */}
     </ItemLi>
   );
 };

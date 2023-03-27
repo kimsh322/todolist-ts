@@ -23,7 +23,9 @@ const MainContainer = styled.div`
   .fade {
     width: 100%;
     height: 85%;
-    border: 5px solid black;
+    border: 2px solid black;
+    border-radius: 0 0 10px 10px;
+    overflow: hidden;
   }
   .fade-enter {
     opacity: 0;

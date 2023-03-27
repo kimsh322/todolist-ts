@@ -17,13 +17,10 @@ const MainPageContainer = styled.div`
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    h2 {
-      font-size: 3em;
-    }
     p {
       color: white;
       mix-blend-mode: difference;
-      font-size: 2em;
+      font-size: 2.5em;
     }
   }
 `;

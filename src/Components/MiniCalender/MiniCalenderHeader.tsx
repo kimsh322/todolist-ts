@@ -7,24 +7,24 @@ const CalenderHeaderContainer = styled.div`
   display: flex;
   justify-content: center;
   position: relative;
-  background-color: #fff4e0;
+  background-color: #c9eeff;
   width: 90%;
   height: 10%;
   border-radius: 10px;
 
   .month {
-    font-size: 1em;
+    font-size: 1.2em;
   }
 
   @media screen and (max-width: 900px) {
     .month {
-      font-size: 0.5em;
+      font-size: 0.6em;
     }
   }
   .year-box {
     position: absolute;
     left: 2%;
-    font-size: 1em;
+    font-size: 1.2em;
     display: flex;
     height: 100%;
     align-items: center;

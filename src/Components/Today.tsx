@@ -20,7 +20,7 @@ const TodayContainer = styled.div`
     width: 100%;
     .month {
       color: white;
-      font-size: 2em;
+      font-size: 2.3em;
     }
   }
   .day-box {
@@ -29,7 +29,7 @@ const TodayContainer = styled.div`
     align-items: center;
   }
   .day {
-    font-size: 3em;
+    font-size: 3.3em;
   }
 `;
 

@@ -13,26 +13,34 @@ const TodayEndContainer = styled.div`
   align-items: center;
   width: 100%;
   height: 100%;
-  background-color: beige;
+  background-color: #c9eeff;
   position: relative;
-
   .list-box {
     width: 70%;
     height: 50%;
     display: flex;
     flex-direction: column;
-    background-color: gray;
+    background-color: #146c94;
     padding: 50px;
-    overflow: auto;
+    overflow-y: auto;
+    border-radius: 10px 10px 0 0;
   }
   .textarea-container {
     width: 70%;
     height: 40%;
     display: flex;
     flex-direction: column;
-    background-color: orange;
+    background-color: #19a7ce;
+    border-radius: 0 0 10px 10px;
+    .memo-label {
+      height: 20%;
+      font-size: 2.5em;
+      padding-left: 1%;
+    }
     #story {
-      height: 90%;
+      height: 80%;
+      border-radius: 0 0 10px 10px;
+      background-color: #f6f1f1;
     }
   }
   .todayend-submit {
@@ -42,7 +50,7 @@ const TodayEndContainer = styled.div`
     bottom: 5%;
     width: 10%;
     height: 10%;
-    font-size: 1em;
+    font-size: 2em;
     padding: 0;
     border: none;
     border-radius: 10px;
@@ -106,7 +114,9 @@ const TodayEnd = () => {
           : null}
       </ul>
       <div className="textarea-container">
-        <label htmlFor="story">메모적기</label>
+        <label htmlFor="story" className="memo-label">
+          메모하기
+        </label>
         <textarea
           id="story"
           name="story"
@@ -115,8 +125,7 @@ const TodayEnd = () => {
         ></textarea>
       </div>
       <button className="todayend-submit" onClick={() => handleSubmit()}>
-        {" "}
-        오늘 일과 끝!
+        완료!
       </button>
     </TodayEndContainer>
   );

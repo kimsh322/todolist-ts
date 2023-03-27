@@ -20,11 +20,15 @@ const HeaderContainer = styled.div`
   align-items: center;
   width: 100%;
   height: 15%;
-  background-color: #408e91;
-
+  background-color: #aa77ff;
+  border: 2px solid black;
+  border-radius: 10px 10px 0 0;
+  padding-bottom: 1.5%;
+  position: relative;
   .menu {
     position: absolute;
     left: 3%;
+    bottom: 22%;
     width: 3em;
     height: 3em;
     cursor: pointer;
@@ -34,13 +38,14 @@ const HeaderContainer = styled.div`
     position: absolute;
     cursor: pointer;
     right: 2%;
+    bottom: 15%;
     width: 4em;
     height: 4em;
   }
 `;
 // typeit 폰트크기 조정
 const MainHead = ({ children }: TypeitProps) => {
-  return <h1 style={{ fontSize: "4em" }}>{children}</h1>;
+  return <h1 style={{ fontSize: "4.5em" }}>{children}</h1>;
 };
 
 const Header = ({ headText, loading, isClick, setIsClick }: Props) => {

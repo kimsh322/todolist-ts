@@ -7,25 +7,25 @@ const CalenderHeaderContainer = styled.div`
   display: flex;
   justify-content: center;
   position: relative;
-  background-color: #fff4e0;
+  background-color: #c9eeff;
   width: 90%;
   height: 10%;
   border-radius: 10px;
 
   .month {
-    font-size: 3em;
+    font-size: 3.3em;
   }
 
   @media screen and (max-width: 900px) {
     .month {
-      font-size: 2em;
+      font-size: 2.2em;
     }
   }
   .year-box {
     position: absolute;
     left: 1%;
     top: 40%;
-    font-size: 1.5em;
+    font-size: 1.8em;
     display: flex;
   }
   .date {
@@ -42,6 +42,7 @@ const CalenderHeaderContainer = styled.div`
     display: flex;
     justify-content: center;
     border: none;
+    cursor: pointer;
   }
 `;
 

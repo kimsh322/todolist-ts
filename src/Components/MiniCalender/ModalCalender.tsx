@@ -26,7 +26,7 @@ const ModalView = styled.div`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background: skyblue;
+  background: #c9eeff;
   width: 20%;
   height: 30%;
   border-radius: 20px;

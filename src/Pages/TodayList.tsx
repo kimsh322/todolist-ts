@@ -14,18 +14,19 @@ const TodayListContainer = styled.ul`
   align-items: center;
   width: 100%;
   height: 100%;
-  background-color: #dbecb0;
+  background-color: #c9eeff;
   position: relative;
   padding-left: 0;
 
   .list-box {
     width: 70%;
     height: 70%;
-    background-color: beige;
+    background-color: #ffbf9b;
     display: flex;
     flex-direction: column;
     padding: 50px;
     overflow: auto;
+    border-radius: 0 0 10px 10px;
   }
   .confirm {
     display: flex;
@@ -36,8 +37,8 @@ const TodayListContainer = styled.ul`
     bottom: 5%;
     width: 10%;
     height: 10%;
-    background-color: #ca20ae;
-    color: white;
+    background-color: #aa77ff;
+    color: black;
     font-size: 1.5em;
     padding: 0;
     border: none;
@@ -75,7 +76,7 @@ const TodayList = () => {
         })}
       </ul>
       <button className="confirm" onClick={() => handleSubmit()}>
-        Submit
+        확정하기!
       </button>
       <TodayListModal isOpen={isOpen} setIsOpen={setIsOpen} />
     </TodayListContainer>

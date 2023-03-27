@@ -26,6 +26,7 @@ const DaysContainer = styled.div`
       height: 100%;
       background-color: #fff4e0;
       border: 0.5px solid black;
+      font-size: 1.2em;
       span {
         color: black;
       }
