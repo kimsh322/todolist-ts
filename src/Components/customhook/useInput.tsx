@@ -1,11 +1,11 @@
-const useInput = (
-  value: string,
-  setState: React.Dispatch<React.SetStateAction<string>>
-) => {
+import { useState } from "react";
+
+const useInput = (initialValue: string) => {
+  const [value, setValue] = useState(initialValue);
   const bind = {
     value,
     onChange: (e: React.ChangeEvent<HTMLInputElement>) => {
-      setState(e.target.value);
+      setValue(e.target.value);
     },
   };
   return bind;

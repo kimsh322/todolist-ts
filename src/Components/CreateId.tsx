@@ -34,14 +34,14 @@ const CreateIdForm = styled.form`
 `;
 
 const CreateId = () => {
-  const [id, setId] = useState("");
-  const [password, setPassword] = useState("");
-  const [passwordConfirm, setPasswordConfirm] = useState("");
   const [invalid, setInvalid] = useState(false);
   const [coincide, setCoincide] = useState(true);
-  const inputId = useInput(id, setId);
-  const inputPassword = useInput(password, setPassword);
-  const inputPasswordConfirm = useInput(passwordConfirm, setPasswordConfirm);
+  const inputId = useInput("");
+  const inputPassword = useInput("");
+  const inputPasswordConfirm = useInput("");
+  const id = inputId.value;
+  const password = inputPassword.value;
+  const passwordConfirm = inputPasswordConfirm.value;
 
   const handleSubmit = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault();
