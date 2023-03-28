@@ -41,6 +41,7 @@ const TodayEndContainer = styled.div`
       height: 80%;
       border-radius: 0 0 10px 10px;
       background-color: #f6f1f1;
+      font-size: 1.5em;
     }
   }
   .todayend-submit {
@@ -54,6 +55,7 @@ const TodayEndContainer = styled.div`
     padding: 0;
     border: none;
     border-radius: 10px;
+    cursor: pointer;
   }
 `;
 interface TodayList {
@@ -79,9 +81,11 @@ const TodayEnd = () => {
 
   const handleSubmit = async () => {
     if (todayConfirmList.length) {
+      let text = memo;
+      text = text.replace(/(?:\r\n|\r|\n)/g, "<br>"); // 엔터누르면 <br>로 바꿈
       const newObj = {
         list: todayConfirmList,
-        memo,
+        memo: text,
       };
       try {
         const docRef = await setDoc(

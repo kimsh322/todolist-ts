@@ -1,8 +1,8 @@
 import { createRef } from "react";
-import MainPage from "../Pages/MainPage";
-import TodayEnd from "../Pages/TodayEnd";
-import TodayList from "../Pages/TodayList";
-import History from "../Pages/History";
+import MainPage from "./MainPage";
+import TodayEnd from "./TodayEnd";
+import TodayList from "./TodayList";
+import History from "./History";
 import { createBrowserRouter } from "react-router-dom";
 import App from "../App";
 

@@ -3,7 +3,7 @@ import Header from "./Components/Header";
 import NavBar from "./Components/NavBar";
 import styled from "styled-components";
 
-import { routes } from "./Components/router";
+import { routes } from "./Pages/router";
 import { CSSTransition, SwitchTransition } from "react-transition-group";
 import { useState } from "react";
 

@@ -14,7 +14,7 @@ const AddListContainer = styled.form`
   border-radius: 10px 10px 0 0;
   .add-box-text {
     margin-left: 1em;
-    font-size: 1.5em;
+    font-size: 1.8em;
   }
   .add-input {
     width: 60%;

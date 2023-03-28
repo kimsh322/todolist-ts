@@ -1,5 +1,7 @@
 import styled from "styled-components";
 import runningImg from "../img/running.jpg";
+import { useState } from "react";
+import SignIn from "./SignIn";
 
 const MainPageContainer = styled.div`
   display: flex;
@@ -23,9 +25,21 @@ const MainPageContainer = styled.div`
       font-size: 2.5em;
     }
   }
+  .sign-in {
+    position: absolute;
+    right: 15px;
+    bottom: 15px;
+    width: 120px;
+    height: 50px;
+    font-size: 2em;
+  }
 `;
 
 const MainPage = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const handleClick = () => {
+    setIsOpen(true);
+  };
   return (
     <MainPageContainer>
       <div className="box">
@@ -33,6 +47,10 @@ const MainPage = () => {
         <p>여기는 무슨 내용을 적을지 고민이된다.</p>
         <p>어떤걸 적으면 잘적었다고 소문이 날까 </p>
       </div>
+      <button className="sign-in" onClick={handleClick}>
+        회원가입
+      </button>
+      <SignIn isOpen={isOpen} setIsOpen={setIsOpen} />
     </MainPageContainer>
   );
 };

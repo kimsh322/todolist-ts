@@ -1,6 +1,6 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { routes } from "./router";
+import { routes } from "../Pages/router";
 import catImg from "../img/cat.jpg";
 
 interface StylePropsType {
@@ -53,6 +53,7 @@ const StyledLink = styled(Link)`
   height: 100%;
   text-decoration: none;
   font-size: 2em;
+  color: black;
 `;
 
 const NavBar = ({
@@ -62,8 +63,6 @@ const NavBar = ({
   isClick,
   setIsClick,
 }: Props) => {
-  const navigate = useNavigate();
-
   const handleLinkClick = (e: React.BaseSyntheticEvent) => {
     setIsClick(false);
     // Typeit text 삽입 코드
@@ -74,15 +73,9 @@ const NavBar = ({
       setLoading((isloading) => !isloading); // 콜백함수로 setState 사용하기!
     }, 500);
   };
-
   return (
     <NavBarContainer isClick={isClick}>
-      <img
-        src={catImg}
-        alt="cat"
-        className="cat"
-        onClick={() => navigate("/")}
-      />
+      <img src={catImg} alt="cat" className="cat" />
       {routes.map((el) => {
         return (
           <button
