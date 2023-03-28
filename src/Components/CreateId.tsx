@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { useState } from "react";
 import useInput from "./customhook/useInput";
 import handleCreateId from "../FireBase/handleCreateId";
+import CreateSuccess from "./CreateSuccess";
 
 const CreateIdForm = styled.form`
   display: flex;
@@ -36,6 +37,7 @@ const CreateIdForm = styled.form`
 const CreateId = () => {
   const [invalid, setInvalid] = useState(false);
   const [coincide, setCoincide] = useState(true);
+  const [createSuccess, setCreateSuccess] = useState(false);
   const inputId = useInput("");
   const inputPassword = useInput("");
   const inputPasswordConfirm = useInput("");
@@ -45,7 +47,6 @@ const CreateId = () => {
 
   const handleSubmit = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault();
-
     const validId =
       /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/.test(
         id
@@ -53,7 +54,7 @@ const CreateId = () => {
     if (password !== passwordConfirm) setCoincide(false);
     if (!validId) setInvalid(true);
     if (password === passwordConfirm && validId) {
-      handleCreateId(id, password);
+      handleCreateId(id, password, setCreateSuccess);
     }
   };
 
@@ -89,6 +90,10 @@ const CreateId = () => {
       <button className="submit" onClick={(e) => handleSubmit(e)}>
         가입하기
       </button>
+      <CreateSuccess
+        createSuccess={createSuccess}
+        setCreateSuccess={setCreateSuccess}
+      />
     </CreateIdForm>
   );
 };
