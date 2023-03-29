@@ -1,17 +1,16 @@
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from "./firebase";
 
-const handleCreateId = (
+export const handleCreateId = (
   id: string,
   password: string,
   setCreateSuccess: React.Dispatch<React.SetStateAction<boolean>>
 ) => {
-  const auth = getAuth();
   createUserWithEmailAndPassword(auth, id, password)
     .then((userCredential) => {
       // id 생성
       const user = userCredential.user;
+      console.log(user);
     })
     .then(() => setCreateSuccess(true));
 };
-
-export default handleCreateId;
