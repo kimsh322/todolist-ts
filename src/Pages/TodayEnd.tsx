@@ -5,6 +5,8 @@ import { doc, setDoc } from "firebase/firestore";
 import { db } from "../FireBase/firebase";
 import { useState } from "react";
 import Today from "../Components/Today";
+import TodayEndConfirmModal from "../Components/TodayEndConfirmModal";
+import { useNavigate } from "react-router-dom";
 
 const TodayEndContainer = styled.div`
   display: flex;
@@ -67,13 +69,11 @@ type TodayListArr = TodayList[];
 
 const TodayEnd = () => {
   const todayItems = localStorage.getItem(format(new Date(), "P"));
-  const initialTodayConfirmList: TodayListArr = todayItems
-    ? JSON.parse(todayItems)
-    : [];
+  const initialTodayConfirmList: TodayListArr = todayItems ? JSON.parse(todayItems) : [];
   const [memo, setMemo] = useState<string>("");
-  const [todayConfirmList, setTodayConfirmList] = useState(
-    initialTodayConfirmList
-  );
+  const [todayConfirmList, setTodayConfirmList] = useState(initialTodayConfirmList);
+  const [isConfirmModalOpen, setIsConfirmModalOpen] = useState(false);
+  const navigate = useNavigate();
 
   const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setMemo(e.target.value);
@@ -88,11 +88,11 @@ const TodayEnd = () => {
         memo: text,
       };
       try {
-        const docRef = await setDoc(
-          doc(db, "userId", format(new Date(), "PP")),
-          newObj
-        );
+        const docRef = await setDoc(doc(db, "userId", format(new Date(), "PP")), newObj);
         console.log("Document written with ID: ", docRef);
+        setIsConfirmModalOpen(true);
+        localStorage.removeItem(format(new Date(), "P"));
+        setTimeout(() => navigate(0), 500);
       } catch (e) {
         console.error("Error adding document: ", e);
       }
@@ -121,16 +121,12 @@ const TodayEnd = () => {
         <label htmlFor="story" className="memo-label">
           메모하기
         </label>
-        <textarea
-          id="story"
-          name="story"
-          value={memo}
-          onChange={(e) => handleChange(e)}
-        ></textarea>
+        <textarea id="story" name="story" value={memo} onChange={(e) => handleChange(e)}></textarea>
       </div>
       <button className="todayend-submit" onClick={() => handleSubmit()}>
         완료!
       </button>
+      {isConfirmModalOpen ? <TodayEndConfirmModal setIsConfirmModalOpen={setIsConfirmModalOpen} /> : null}
     </TodayEndContainer>
   );
 };

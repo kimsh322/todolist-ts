@@ -6,6 +6,7 @@ import Today from "../Components/Today";
 import { useState } from "react";
 import TodayListModal from "../Components/TodayListModal";
 import { format } from "date-fns";
+import { useNavigate } from "react-router-dom";
 
 const TodayListContainer = styled.ul`
   display: flex;
@@ -50,8 +51,7 @@ const TodayListContainer = styled.ul`
       border: 3px solid #620653;
     }
     &:active {
-      box-shadow: inset -0.3rem -0.1rem 1.4rem #3c1137,
-        inset 0.3rem 0.4rem 0.8rem #3c1137;
+      box-shadow: inset -0.3rem -0.1rem 1.4rem #3c1137, inset 0.3rem 0.4rem 0.8rem #3c1137;
     }
   }
 `;
@@ -59,11 +59,14 @@ const TodayListContainer = styled.ul`
 const TodayList = () => {
   const todayList = useAppSelector((state) => state.todayList);
   const [isOpen, setIsOpen] = useState(false);
+  const navigate = useNavigate();
 
   const handleSubmit = () => {
     if (todayList.length === 0) return;
     setIsOpen(true);
     localStorage.setItem(format(new Date(), "P"), JSON.stringify(todayList));
+    setTimeout(() => setIsOpen(false), 400);
+    setTimeout(() => navigate("/todayend"), 500);
   };
 
   return (

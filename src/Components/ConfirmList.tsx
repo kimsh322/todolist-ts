@@ -13,14 +13,14 @@ const ItemLi = styled.li`
   height: 2.5em;
   border-width: 3px;
   border-style: solid;
-  border-color: ${(props: StyleProps) =>
-    props.isChecked ? "green" : "transparent"};
+  border-color: ${(props: StyleProps) => (props.isChecked ? "green" : "transparent")};
 
   .checkbox {
     width: 5%;
     height: 50%;
     position: absolute;
     right: 10px;
+    cursor: pointer;
   }
   span {
     display: flex;
@@ -48,12 +48,7 @@ interface TodayList {
 }
 type TodayListArr = TodayList[];
 
-const ConfirmList = ({
-  text,
-  idx,
-  todayConfirmList,
-  setTodayConfirmList,
-}: Props) => {
+const ConfirmList = ({ text, idx, todayConfirmList, setTodayConfirmList }: Props) => {
   const [isChecked, setIsChecked] = useState(false);
   const handleChange = () => {
     setIsChecked(!isChecked);
@@ -66,11 +61,7 @@ const ConfirmList = ({
   return (
     <ItemLi isChecked={isChecked}>
       <span>{text}</span>
-      <input
-        type="checkbox"
-        className="checkbox"
-        onChange={() => handleChange()}
-      />
+      <input type="checkbox" className="checkbox" onChange={() => handleChange()} />
     </ItemLi>
   );
 };
