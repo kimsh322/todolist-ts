@@ -1,9 +1,10 @@
 import styled from "styled-components";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import SignIn from "./SignIn";
 import Login from "../Components/Login";
 import MyPage from "./MyPage";
-import { useAppSelector } from "../store/reduxHooks";
+import { useAppDispatch, useAppSelector } from "../store/reduxHooks";
+import { changeToSignIn } from "../store/logSlice";
 
 const MainPageContainer = styled.div`
   display: flex;
@@ -32,6 +33,16 @@ const MainPageContainer = styled.div`
 const MainPage = () => {
   const isSignIn = useAppSelector((state) => state.isSignIn);
   const [isOpen, setIsOpen] = useState(false);
+  const apiKey = process.env.REACT_APP_apiKey;
+  const dispatch = useAppDispatch();
+  // 세션 스토리지에 로그인 기록이 있으면 가져온다.
+  const _session_key = `firebase:authUser:${apiKey}:[DEFAULT]`;
+  const is_session = sessionStorage.getItem(_session_key) ? true : false;
+  useEffect(() => {
+    if (is_session) {
+      dispatch(changeToSignIn());
+    }
+  }, []);
 
   return (
     <MainPageContainer>

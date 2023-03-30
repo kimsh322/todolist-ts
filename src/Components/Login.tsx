@@ -1,10 +1,16 @@
 import styled from "styled-components";
 import useInput from "./customhook/useInput";
 import catImg from "../img/cat.jpg";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import {
+  setPersistence,
+  signInWithEmailAndPassword,
+  browserSessionPersistence,
+} from "firebase/auth";
 import { changeToSignIn } from "../store/logSlice";
 import { useAppDispatch } from "../store/reduxHooks";
 import { auth } from "../FireBase/firebase";
+import SignInFailModal from "./SignInFailModal";
+import { useState } from "react";
 
 const LoginContainer = styled.div`
   display: flex;
@@ -23,25 +29,28 @@ const LoginContainer = styled.div`
     border-radius: 0 10px 10px 0;
     .header-text {
       margin-bottom: 3%;
-      font-size: 2.5em;
+      font-size: 3em;
     }
     .input-box {
       width: 70%;
-      height: 15%;
+      height: 20%;
       margin: 3% 0;
+      padding: 0;
       #id,
       #password {
         width: 100%;
         height: 100%;
+        font-size: 1.3em;
       }
     }
     .sign-in-button {
       width: 70%;
-      height: 15%;
+      height: 20%;
       margin-top: 5%;
       font-size: 1.3em;
       background-color: #159895;
       border-radius: 5px;
+      cursor: pointer;
     }
   }
 
@@ -59,10 +68,13 @@ const LoginContainer = styled.div`
   }
   .sign-up-container {
     width: 70%;
+    .sign-up-text {
+      font-size: 1.3em;
+    }
     .sign-up {
       width: 40%;
       height: 70%;
-      font-size: 1em;
+      font-size: 1.3em;
       color: blue;
       margin-top: 10%;
       border-radius: 5px;
@@ -83,10 +95,14 @@ const Login = ({ setIsOpen }: Props) => {
   const id = inputId.value;
   const password = inputPassword.value;
   const dispatch = useAppDispatch();
+  const [isFailModalOpen, setIsFailModalOpen] = useState(false);
 
   // 로그인 함수
   const handleSignInButtonClick = () => {
-    signInWithEmailAndPassword(auth, id, password)
+    setPersistence(auth, browserSessionPersistence) // 세션에 로그인 정보 저장
+      .then(() => {
+        return signInWithEmailAndPassword(auth, id, password);
+      })
       .then((userCredential) => {
         // 로그인 성공
         const user = userCredential.user;
@@ -97,6 +113,8 @@ const Login = ({ setIsOpen }: Props) => {
         // 로그인 실패
         const errorCode = error.code;
         const errorMessage = error.message;
+        console.log(errorMessage);
+        setIsFailModalOpen(true);
       });
   };
 
@@ -120,12 +138,13 @@ const Login = ({ setIsOpen }: Props) => {
           Sign in
         </button>
         <div className="sign-up-container">
-          <span>계정이 없으신가요? </span>
+          <span className="sign-up-text">계정이 없으신가요? </span>
           <button className="sign-up" onClick={handleSignInClick}>
             회원가입
           </button>
         </div>
       </div>
+      {isFailModalOpen ? <SignInFailModal setIsFailModalOpen={setIsFailModalOpen} /> : null}
     </LoginContainer>
   );
 };
