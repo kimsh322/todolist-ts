@@ -3,7 +3,9 @@ import { format } from "date-fns";
 import ConfirmList from "../Components/ConfirmList";
 import { doc, setDoc } from "firebase/firestore";
 import { db } from "../FireBase/firebase";
-import { useState } from "react";
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "../FireBase/firebase";
+import { useEffect, useState } from "react";
 import Today from "../Components/Today";
 import TodayEndConfirmModal from "../Components/TodayEndConfirmModal";
 import { useNavigate } from "react-router-dom";
@@ -44,6 +46,7 @@ const TodayEndContainer = styled.div`
       border-radius: 0 0 10px 10px;
       background-color: #f6f1f1;
       font-size: 1.5em;
+      resize: none;
     }
   }
   .todayend-submit {
@@ -73,14 +76,27 @@ const TodayEnd = () => {
   const [memo, setMemo] = useState<string>("");
   const [todayConfirmList, setTodayConfirmList] = useState(initialTodayConfirmList);
   const [isConfirmModalOpen, setIsConfirmModalOpen] = useState(false);
+  const [currentUserUid, setCurrentUserUid] = useState("");
   const navigate = useNavigate();
+  // 현재 유저 정보 가져오기
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        const uid = user.uid;
+        setCurrentUserUid(uid);
+      } else {
+        // User is signed out
+        // ...
+      }
+    });
+  }, []);
 
   const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setMemo(e.target.value);
   };
 
   const handleSubmit = async () => {
-    if (todayConfirmList.length) {
+    if (todayConfirmList.length && currentUserUid !== "") {
       let text = memo;
       text = text.replace(/(?:\r\n|\r|\n)/g, "<br>"); // 엔터누르면 <br>로 바꿈
       const newObj = {
@@ -88,7 +104,7 @@ const TodayEnd = () => {
         memo: text,
       };
       try {
-        const docRef = await setDoc(doc(db, "userId", format(new Date(), "PP")), newObj);
+        const docRef = await setDoc(doc(db, currentUserUid, format(new Date(), "PP")), newObj);
         console.log("Document written with ID: ", docRef);
         setIsConfirmModalOpen(true);
         localStorage.removeItem(format(new Date(), "P"));
@@ -96,7 +112,7 @@ const TodayEnd = () => {
       } catch (e) {
         console.error("Error adding document: ", e);
       }
-    }
+    } else console.log("로그인하세요!");
   };
 
   return (

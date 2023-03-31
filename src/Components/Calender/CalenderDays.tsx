@@ -1,12 +1,5 @@
 import styled from "styled-components";
-import {
-  startOfMonth,
-  endOfMonth,
-  startOfWeek,
-  endOfWeek,
-  addDays,
-  format,
-} from "date-fns";
+import { startOfMonth, endOfMonth, startOfWeek, endOfWeek, addDays, format } from "date-fns";
 
 const DaysContainer = styled.div`
   color: white;
@@ -15,7 +8,7 @@ const DaysContainer = styled.div`
   width: 90%;
   height: 80%;
   .week {
-    margin-left: 1%;
+    margin-left: 0.3%;
     display: flex;
     width: 100%;
     height: 20%;
@@ -71,17 +64,8 @@ const CalenderDays = ({ curMonth, selectedDate }: Props) => {
     for (let i = 0; i < 7; i++) {
       formatDate = format(day, "d");
       week.push(
-        <div
-          key={formatDate}
-          className={`cell ${isToday(curMonth, day) ? "today" : ""}`}
-        >
-          <span
-            className={
-              format(curMonth, "M") !== format(day, "M") ? "not-valid" : ""
-            }
-          >
-            {formatDate}
-          </span>
+        <div key={formatDate} className={`cell ${isToday(curMonth, day) ? "today" : ""}`}>
+          <span className={format(curMonth, "M") !== format(day, "M") ? "not-valid" : ""}>{formatDate}</span>
         </div>
       );
       day = addDays(day, 1);

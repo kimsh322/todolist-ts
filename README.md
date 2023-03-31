@@ -12,6 +12,5 @@
 
 # 메모
 
-    현재 사용자 정보 가져올 때 onAuthStateChanged 사용
     로그인 세션으로 유지하기 참고
     https://velog.io/@zo2kim/%EB%A1%9C%EA%B7%B8%EC%9D%B8-%EC%9C%A0%EC%A7%80%ED%95%98%EA%B8%B0

@@ -1,11 +1,7 @@
 import styled from "styled-components";
 import useInput from "./customhook/useInput";
 import catImg from "../img/cat.jpg";
-import {
-  setPersistence,
-  signInWithEmailAndPassword,
-  browserSessionPersistence,
-} from "firebase/auth";
+import { setPersistence, signInWithEmailAndPassword, browserSessionPersistence } from "firebase/auth";
 import { changeToSignIn } from "../store/logSlice";
 import { useAppDispatch } from "../store/reduxHooks";
 import { auth } from "../FireBase/firebase";
@@ -100,9 +96,7 @@ const Login = ({ setIsOpen }: Props) => {
   // 로그인 함수
   const handleSignInButtonClick = () => {
     setPersistence(auth, browserSessionPersistence) // 세션에 로그인 정보 저장
-      .then(() => {
-        return signInWithEmailAndPassword(auth, id, password);
-      })
+      .then(() => signInWithEmailAndPassword(auth, id, password))
       .then((userCredential) => {
         // 로그인 성공
         const user = userCredential.user;

@@ -7,14 +7,13 @@ const WeekContainer = styled.div`
   height: 5%;
   background-color: #ffbf9b;
   padding: 0 1%;
-  margin-left: 1%;
+  margin-left: 0;
   border-radius: 5px;
   .week {
     width: 13%;
     display: flex;
     justify-content: center;
     align-items: center;
-    /* border: 0.3px solid black; */
     border-radius: 5px;
     background-color: #ffbf9b;
   }

@@ -24,9 +24,7 @@ const ItemLi = styled.li`
   flex-direction: column;
   justify-content: center;
   height: 3em;
-  animation: ${({ isRemove }: StyleProps) =>
-      isRemove ? "flipOutX" : "flipInX"}
-    0.5s;
+  animation: ${({ isRemove }: StyleProps) => (isRemove ? "flipOutX" : "flipInX")} 0.5s;
   span {
     display: flex;
     align-items: center;
@@ -62,9 +60,6 @@ const ListItem = ({ text, idx }: Props) => {
     <ItemLi isRemove={isRemove}>
       <span>{text}</span>
       <TbXboxX className="remove" onClick={handleRemoveClick} />
-      {/* <button className="remove" >
-        X
-      </button> */}
     </ItemLi>
   );
 };
