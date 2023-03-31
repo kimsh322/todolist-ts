@@ -15,7 +15,6 @@ const CalenderContainer = styled.div`
 
 const Calender = () => {
   const [curMonth, setCurMonth] = useState(new Date());
-  const [selectedDate, setSelectedDate] = useState(new Date());
 
   const prevMonth = () => {
     setCurMonth(subMonths(curMonth, 1));
@@ -26,13 +25,9 @@ const Calender = () => {
 
   return (
     <CalenderContainer>
-      <CalenderHeader
-        curMonth={curMonth}
-        prevMonth={prevMonth}
-        nextMonth={nextMonth}
-      />
+      <CalenderHeader curMonth={curMonth} prevMonth={prevMonth} nextMonth={nextMonth} />
       <CalenderWeek />
-      <CalenderDays curMonth={curMonth} selectedDate={selectedDate} />
+      <CalenderDays curMonth={curMonth} />
     </CalenderContainer>
   );
 };
