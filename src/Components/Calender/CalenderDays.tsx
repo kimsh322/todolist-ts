@@ -4,6 +4,8 @@ import { collection, getDocs } from "firebase/firestore";
 import { db, auth } from "../../FireBase/firebase";
 import { useState, useEffect } from "react";
 import { onAuthStateChanged } from "firebase/auth";
+import { BsClipboardCheckFill } from "react-icons/bs";
+import CalenderDataModal from "./CalenderDataModal";
 
 const DaysContainer = styled.div`
   color: white;
@@ -18,12 +20,14 @@ const DaysContainer = styled.div`
     height: 20%;
     margin-bottom: 0.1%;
     .cell {
+      display: flex;
       margin: 0.1%;
       width: 14%;
       height: 100%;
       background-color: #fff4e0;
       border: 0.5px solid black;
       font-size: 1.2em;
+      position: relative;
       &:hover {
         background-color: #b2a4ff;
       }
@@ -32,6 +36,16 @@ const DaysContainer = styled.div`
       }
       .not-valid {
         opacity: 0.2;
+      }
+      .exist-data-icon {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 70%;
+        height: 70%;
+        transform: translate(-50%, -50%);
+        color: #675d50;
+        cursor: pointer;
       }
     }
     .today {
@@ -44,8 +58,20 @@ const DaysContainer = styled.div`
 interface Props {
   curMonth: Date;
 }
+interface ItemList {
+  key: string;
+  value: string;
+  done: boolean;
+}
+interface EachDataObj {
+  memo: string;
+  list: ItemList[];
+}
+interface GetDataObj {
+  [key: string]: EachDataObj;
+}
 interface DataObj {
-  [key: string]: {};
+  [key: string]: any; // 이거는 잘 모르겠다..
 }
 
 const CalenderDays = ({ curMonth }: Props) => {
@@ -59,6 +85,9 @@ const CalenderDays = ({ curMonth }: Props) => {
   let day = startDate;
   let key = 0;
 
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [curDayData, setCurDayData] = useState<EachDataObj>({ memo: "a", list: [] });
+
   //오늘인지 확인하는 함수
   const isToday = (a: Date, b: Date) => {
     return (
@@ -69,22 +98,33 @@ const CalenderDays = ({ curMonth }: Props) => {
     );
   };
 
+  // 해당날짜에 데이터있는지 확인
+  const isKeyThere = (formatDate: string, monthYear: Date, day: Date) => {
+    let month = format(monthYear, "MMM");
+    let year = format(monthYear, "y");
+    let curKey = `${month} ${formatDate}, ${year}`;
+    // 키가 있고 && 해당 달의 날짜인지 확인
+    return curKey in userData && format(monthYear, "M") === format(day, "M");
+  };
+
+  // 달력에 뜨는 아이콘 클릭 이벤트
   const handleDayClick = (day: string, monthYear: Date) => {
     let month = format(monthYear, "MMM");
     let year = format(monthYear, "y");
     let curKey = `${month} ${day}, ${year}`;
-    console.log(curKey);
+    if (curKey in userData) {
+      // 해당 날짜 데이터 있으면 state로 할당
+      setCurDayData({ ...userData[curKey] }); // 새 객체 할당해야함
+    }
   };
+  // curData 변경되면 Modal 창 띄우기
+  useEffect(() => {
+    if (curDayData.list.length !== 0) {
+      setIsModalOpen(true);
+    }
+  }, [curDayData]);
 
-  // 일단 데이터를 찾아온다. => 완료
-  // 데이터랑 맞는 날짜를 찾는다. => 함수하나 만들어서 해당 날짜가 데이터 키에 있는지 true/false 반환
-  // true면 해당 div박스에 클래스 추가되게 삼항연산자
-  // 그날짜 div에 onclick에 해당 데이터 setState해주고
-  // setState(현재날짜 데이터, () => {setModal(true)}
-  // 이런식으로 작성
-  // 끝인가?
-
-  const [userData, setUserData] = useState<DataObj>({});
+  const [userData, setUserData] = useState<GetDataObj>({});
   // 현재 유저 정보 가져오기
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
@@ -98,7 +138,7 @@ const CalenderDays = ({ curMonth }: Props) => {
     });
   }, []);
 
-  // 데이터 받아오기
+  // 유저 데이터 받아오기
   const getData = async (uid: string) => {
     if (uid) {
       const docRef = collection(db, uid);
@@ -112,18 +152,17 @@ const CalenderDays = ({ curMonth }: Props) => {
       }
     }
   };
-  console.log(userData);
 
+  // 달력 만들기
   while (day <= endDate) {
     for (let i = 0; i < 7; i++) {
       let formatDate = format(day, "d");
       week.push(
-        <div
-          key={formatDate}
-          onClick={() => handleDayClick(formatDate, curMonth)}
-          className={`cell ${isToday(curMonth, day) ? "today" : ""}`}
-        >
+        <div key={formatDate} className={`cell ${isToday(curMonth, day) ? "today" : ""}`}>
           <span className={format(curMonth, "M") !== format(day, "M") ? "not-valid" : ""}>{formatDate}</span>
+          {isKeyThere(formatDate, curMonth, day) ? (
+            <BsClipboardCheckFill className="exist-data-icon" onClick={() => handleDayClick(formatDate, curMonth)} />
+          ) : null}
         </div>
       );
       day = addDays(day, 1);
@@ -136,7 +175,12 @@ const CalenderDays = ({ curMonth }: Props) => {
     week = [];
   }
 
-  return <DaysContainer>{cells}</DaysContainer>;
+  return (
+    <DaysContainer>
+      {cells}
+      {isModalOpen ? <CalenderDataModal curDayData={curDayData} setIsModalOpen={setIsModalOpen} /> : null}
+    </DaysContainer>
+  );
 };
 
 export default CalenderDays;

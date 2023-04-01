@@ -28,6 +28,9 @@ const TodayListContainer = styled.ul`
     padding: 50px;
     overflow: auto;
     border-radius: 0 0 10px 10px;
+    &::-webkit-scrollbar {
+      display: none;
+    }
   }
   .confirm {
     display: flex;

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import TypeIt from "typeit-react";
-import { SlCalender } from "react-icons/sl";
+import { BsCalendarCheck } from "react-icons/bs";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { useState } from "react";
 import ModalCalender from "./MiniCalender/ModalCalender";
@@ -74,7 +74,7 @@ const Header = ({ headText, loading, isClick, setIsClick }: Props) => {
       ) : (
         <div></div>
       )}
-      <SlCalender className="calender" onClick={() => openModalHandler()} />
+      <BsCalendarCheck className="calender" onClick={() => openModalHandler()} />
       <ModalCalender isOpen={isOpen} setIsOpen={setIsOpen} />
     </HeaderContainer>
   );

@@ -28,6 +28,9 @@ const TodayEndContainer = styled.div`
     padding: 50px;
     overflow-y: auto;
     border-radius: 10px 10px 0 0;
+    &::-webkit-scrollbar {
+      display: none;
+    }
   }
   .textarea-container {
     width: 70%;

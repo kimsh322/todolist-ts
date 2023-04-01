@@ -100,12 +100,12 @@ const Login = ({ setIsOpen }: Props) => {
       .then((userCredential) => {
         // 로그인 성공
         const user = userCredential.user;
-        console.log(user);
+        // console.log(user);
         dispatch(changeToSignIn());
       })
       .catch((error) => {
         // 로그인 실패
-        const errorCode = error.code;
+        // const errorCode = error.code;
         const errorMessage = error.message;
         console.log(errorMessage);
         setIsFailModalOpen(true);

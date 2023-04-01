@@ -43,6 +43,7 @@ const CalenderHeaderContainer = styled.div`
     display: flex;
     justify-content: center;
     border: none;
+    cursor: pointer;
   }
 `;
 
