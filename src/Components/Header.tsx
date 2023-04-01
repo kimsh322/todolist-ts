@@ -48,6 +48,7 @@ const MainHead = ({ children }: TypeitProps) => {
   return <h1 style={{ fontSize: "4.5em" }}>{children}</h1>;
 };
 
+// 헤더 컴포넌트
 const Header = ({ headText, loading, isClick, setIsClick }: Props) => {
   const [isOpen, setIsOpen] = useState(false);
 

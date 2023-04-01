@@ -51,13 +51,20 @@ const MainContainer = styled.div`
 `;
 
 const App = () => {
-  const [headText, setHeadText] = useState<string>("TodoList");
+  const location = useLocation();
+  let initialHeadText: string = "TodoList";
+  for (let el of routes) {
+    if (el.path === location.pathname) {
+      initialHeadText = el.name;
+      break;
+    }
+  }
+
+  const [headText, setHeadText] = useState<string>(initialHeadText);
   const [loading, setLoading] = useState<boolean>(true);
   const [isClick, setIsClick] = useState<boolean>(false);
-  const location = useLocation();
   const currentOutlet = useOutlet();
-  const { nodeRef } =
-    routes.find((route) => route.path === location.pathname) ?? {};
+  const { nodeRef } = routes.find((route) => route.path === location.pathname) ?? {};
 
   // 다른데 클릭하면 NavBar 닫기
   const handleNavBar = () => {
@@ -65,12 +72,7 @@ const App = () => {
   };
   return (
     <MainContainer onClick={handleNavBar}>
-      <Header
-        headText={headText}
-        loading={loading}
-        isClick={isClick}
-        setIsClick={setIsClick}
-      />
+      <Header headText={headText} loading={loading} isClick={isClick} setIsClick={setIsClick} />
       <NavBar
         setHeadText={setHeadText}
         setLoading={setLoading}
@@ -79,13 +81,7 @@ const App = () => {
         setIsClick={setIsClick}
       />
       <SwitchTransition>
-        <CSSTransition
-          key={location.pathname}
-          nodeRef={nodeRef}
-          timeout={500}
-          classNames="fade"
-          unmountOnExit
-        >
+        <CSSTransition key={location.pathname} nodeRef={nodeRef} timeout={500} classNames="fade" unmountOnExit>
           {(state) => (
             <div ref={nodeRef} className="fade">
               {currentOutlet}
