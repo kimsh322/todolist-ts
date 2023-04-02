@@ -43,7 +43,7 @@ interface Props {
   setIsFailModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const TodayListFailModal = ({ isFailModalOpen, setIsFailModalOpen }: Props) => {
+const IsNoListFailModal = ({ isFailModalOpen, setIsFailModalOpen }: Props) => {
   const closeModalHandler = () => {
     setIsFailModalOpen(false);
   };
@@ -62,4 +62,4 @@ const TodayListFailModal = ({ isFailModalOpen, setIsFailModalOpen }: Props) => {
   );
 };
 
-export default TodayListFailModal;
+export default IsNoListFailModal;

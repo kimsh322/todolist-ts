@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import "animate.css";
 
 const MyPageContainer = styled.div`
   display: flex;
@@ -8,6 +9,7 @@ const MyPageContainer = styled.div`
   background-color: #daf5ff;
   width: 100%;
   height: 100%;
+  animation: slideInDown 1s;
   .cat-img {
     width: 30%;
   }

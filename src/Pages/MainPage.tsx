@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { useState, useEffect } from "react";
 import SignIn from "./SignIn";
-import Login from "../Components/Login";
+import Login from "./Login";
 import MyPage from "./MyPage";
 import { useAppDispatch, useAppSelector } from "../store/reduxHooks";
 import { changeToSignIn } from "../store/logSlice";
@@ -14,7 +14,6 @@ const MainPageContainer = styled.div`
   height: 100%;
   position: relative;
   background-color: #daf5ff;
-
   .box {
     width: 80%;
     height: 80%;

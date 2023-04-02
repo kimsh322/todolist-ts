@@ -1,11 +1,11 @@
 import styled from "styled-components";
-import useInput from "./customhook/useInput";
+import useInput from "../Components/customhook/useInput";
 import catImg from "../img/cat.jpg";
 import { setPersistence, signInWithEmailAndPassword, browserSessionPersistence } from "firebase/auth";
 import { changeToSignIn } from "../store/logSlice";
 import { useAppDispatch } from "../store/reduxHooks";
 import { auth } from "../FireBase/firebase";
-import SignInFailModal from "./SignInFailModal";
+import SignInFailModal from "../Components/SignInFailModal";
 import { useState } from "react";
 
 const LoginContainer = styled.div`

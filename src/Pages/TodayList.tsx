@@ -4,10 +4,10 @@ import ListItem from "../Components/ListItem";
 import AddList from "../Components/AddList";
 import Today from "../Components/Today";
 import { useState } from "react";
-import TodayListModal from "../Components/TodayListSaveModal";
+import TodayListSaveModal from "../Components/TodayListSaveModal";
 import { format } from "date-fns";
 import { useNavigate } from "react-router-dom";
-import TodayListFailModal from "../Components/TodayListFailModal";
+import TodayListFailModal from "../Components/IsNoListFailModal";
 
 const TodayListContainer = styled.ul`
   display: flex;
@@ -89,7 +89,7 @@ const TodayList = () => {
       <button className="confirm" onClick={() => handleSubmit()}>
         확정하기!
       </button>
-      <TodayListModal isSaveModalOpen={isSaveModalOpen} setIsSaveModalOpen={setIsSaveModalOpen} />
+      <TodayListSaveModal isSaveModalOpen={isSaveModalOpen} setIsSaveModalOpen={setIsSaveModalOpen} />
       <TodayListFailModal isFailModalOpen={isFailModalOpen} setIsFailModalOpen={setIsFailModalOpen} />
     </TodayListContainer>
   );

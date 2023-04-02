@@ -10,6 +10,7 @@ import Today from "../Components/Today";
 import TodayEndConfirmModal from "../Components/TodayEndConfirmModal";
 import { useNavigate } from "react-router-dom";
 import TodayEndFailModal from "../Components/TodayEndFailModal";
+import TodayListFailModal from "../Components/IsNoListFailModal";
 
 const TodayEndContainer = styled.div`
   display: flex;
@@ -18,7 +19,7 @@ const TodayEndContainer = styled.div`
   align-items: center;
   width: 100%;
   height: 100%;
-  background-color: #c9eeff;
+  background-color: #fff4e0;
   position: relative;
   .list-box {
     width: 70%;
@@ -86,6 +87,7 @@ const TodayEnd = () => {
   const [todayConfirmList, setTodayConfirmList] = useState(initialTodayConfirmList);
   const [isConfirmModalOpen, setIsConfirmModalOpen] = useState(false);
   const [isFailModalOpen, setIsFailModalOpen] = useState(false);
+  const [isNoListModalOpen, setIsNoListModalOpen] = useState(false);
   const [currentUserUid, setCurrentUserUid] = useState("");
   const navigate = useNavigate();
   // 현재 유저 정보 가져오기
@@ -123,8 +125,10 @@ const TodayEnd = () => {
       } catch (e) {
         console.error("Error adding document: ", e);
       }
-    } else {
+    } else if (currentUserUid === "") {
       setIsFailModalOpen(true);
+    } else {
+      setIsNoListModalOpen(true);
     }
   };
 
@@ -157,6 +161,9 @@ const TodayEnd = () => {
       </button>
       {isConfirmModalOpen ? <TodayEndConfirmModal setIsConfirmModalOpen={setIsConfirmModalOpen} /> : null}
       {isFailModalOpen ? <TodayEndFailModal setIsFailModalOpen={setIsFailModalOpen} /> : null}
+      {isNoListModalOpen ? (
+        <TodayListFailModal isFailModalOpen={isNoListModalOpen} setIsFailModalOpen={setIsNoListModalOpen} />
+      ) : null}
     </TodayEndContainer>
   );
 };

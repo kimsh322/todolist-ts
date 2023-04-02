@@ -4,7 +4,7 @@ import { collection, getDocs } from "firebase/firestore";
 import { db, auth } from "../../FireBase/firebase";
 import { useState, useEffect } from "react";
 import { onAuthStateChanged } from "firebase/auth";
-import { BsClipboardCheckFill } from "react-icons/bs";
+import { GiDisc } from "react-icons/gi";
 import CalenderDataModal from "./CalenderDataModal";
 
 const DaysContainer = styled.div`
@@ -161,7 +161,7 @@ const CalenderDays = ({ curMonth }: Props) => {
         <div key={formatDate} className={`cell ${isToday(curMonth, day) ? "today" : ""}`}>
           <span className={format(curMonth, "M") !== format(day, "M") ? "not-valid" : ""}>{formatDate}</span>
           {isKeyThere(formatDate, curMonth, day) ? (
-            <BsClipboardCheckFill className="exist-data-icon" onClick={() => handleDayClick(formatDate, curMonth)} />
+            <GiDisc className="exist-data-icon" onClick={() => handleDayClick(formatDate, curMonth)} />
           ) : null}
         </div>
       );

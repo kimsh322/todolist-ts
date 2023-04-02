@@ -41,7 +41,7 @@ interface Props {
   setIsSaveModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const TodayListModal = ({ isSaveModalOpen, setIsSaveModalOpen }: Props) => {
+const TodayListSaveModal = ({ isSaveModalOpen, setIsSaveModalOpen }: Props) => {
   const closeModalHandler = () => {
     setIsSaveModalOpen(false);
   };
@@ -59,4 +59,4 @@ const TodayListModal = ({ isSaveModalOpen, setIsSaveModalOpen }: Props) => {
   );
 };
 
-export default TodayListModal;
+export default TodayListSaveModal;
