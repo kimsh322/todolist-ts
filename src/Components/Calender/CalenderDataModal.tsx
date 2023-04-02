@@ -66,6 +66,7 @@ const ModalView = styled.div`
     font-size: 1.5em;
     overflow-y: scroll;
     border-radius: 0 0 10px 10px;
+    white-space: pre-line;
     &::-webkit-scrollbar {
       display: none;
     }
@@ -92,6 +93,11 @@ const CalenderDataModal = ({ curDayData, setIsModalOpen }: Props) => {
     setIsModalOpen(false);
   };
 
+  const newLine = (text: string) => {
+    text = text.replace(/(<br>|<br\/>|<br \/>)/g, "\r\n");
+    return text;
+  };
+
   return (
     <ModalContainer>
       <ModalBackdrop onClick={closeModalHandler}>
@@ -106,7 +112,7 @@ const CalenderDataModal = ({ curDayData, setIsModalOpen }: Props) => {
               );
             })}
           </ul>
-          <p className="memo">{curDayData.memo}</p>
+          <p className="memo">{newLine(curDayData.memo)}</p>
         </ModalView>
       </ModalBackdrop>
     </ModalContainer>
