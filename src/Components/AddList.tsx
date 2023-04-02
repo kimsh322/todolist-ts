@@ -1,5 +1,5 @@
 import { useState } from "react";
-import add_button from "../img/add_button.png";
+import { IoMdAddCircleOutline } from "react-icons/io";
 import { setTodayList } from "../store/itemSlice";
 import { useAppDispatch } from "../store/reduxHooks";
 import styled from "styled-components";
@@ -25,13 +25,16 @@ const AddListContainer = styled.form`
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 10%;
+    width: 7%;
     height: 80%;
-    background-color: #33ce33;
+    background-color: #abc4aa;
     margin-right: 1em;
     border: #808080 outset 3px;
+    border-radius: 10px;
+    cursor: pointer;
     .add-button-img {
-      height: 100%;
+      font-size: 3em;
+      color: black;
       aspect-ratio: auto 1 / 1;
     }
     &:active {
@@ -47,9 +50,7 @@ const AddList = () => {
     setInputText(event.target.value);
   };
   // submit 버튼 handler
-  const handleAddClick = (
-    event: React.MouseEvent<HTMLButtonElement, MouseEvent>
-  ) => {
+  const handleAddClick = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     event.preventDefault();
     if (inputText) {
       dispatch(setTodayList(inputText)); // item TodayList store에 저장
@@ -61,13 +62,9 @@ const AddList = () => {
     // form 태그
     <AddListContainer>
       <span className="add-box-text">할 일 추가 : </span>
-      <input
-        className="add-input"
-        value={inputText}
-        onChange={(e) => handleTextChange(e)}
-      />
+      <input className="add-input" value={inputText} onChange={(e) => handleTextChange(e)} />
       <button className="add-button" onClick={(e) => handleAddClick(e)}>
-        <img className="add-button-img" src={add_button} alt="add-button" />
+        <IoMdAddCircleOutline className="add-button-img" />
       </button>
     </AddListContainer>
   );

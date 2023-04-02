@@ -91,7 +91,7 @@ const CalenderDataModal = ({ curDayData, setIsModalOpen }: Props) => {
   const closeModalHandler = () => {
     setIsModalOpen(false);
   };
-  console.log(curDayData);
+
   return (
     <ModalContainer>
       <ModalBackdrop onClick={closeModalHandler}>

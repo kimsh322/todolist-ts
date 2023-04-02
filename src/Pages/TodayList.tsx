@@ -15,7 +15,7 @@ const TodayListContainer = styled.ul`
   align-items: center;
   width: 100%;
   height: 100%;
-  background-color: #c9eeff;
+  background-color: #fff4e0;
   position: relative;
   padding-left: 0;
 
@@ -41,8 +41,8 @@ const TodayListContainer = styled.ul`
     bottom: 5%;
     width: 10%;
     height: 10%;
-    background-color: #aa77ff;
-    color: black;
+    background-color: #4d4d4d;
+    color: white;
     font-size: 1.5em;
     padding: 0;
     border: none;
@@ -53,9 +53,9 @@ const TodayListContainer = styled.ul`
       transition: all 0.2s;
       border: 3px solid #620653;
     }
-    &:active {
+    /* &:active {
       box-shadow: inset -0.3rem -0.1rem 1.4rem #3c1137, inset 0.3rem 0.4rem 0.8rem #3c1137;
-    }
+    } */
   }
 `;
 

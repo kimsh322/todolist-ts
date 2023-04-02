@@ -24,7 +24,7 @@ const TodayEndContainer = styled.div`
     height: 50%;
     display: flex;
     flex-direction: column;
-    background-color: #146c94;
+    background-color: #97deff;
     padding: 50px;
     overflow-y: auto;
     border-radius: 10px 10px 0 0;
@@ -37,7 +37,7 @@ const TodayEndContainer = styled.div`
     height: 40%;
     display: flex;
     flex-direction: column;
-    background-color: #19a7ce;
+    background-color: #62cdff;
     border-radius: 0 0 10px 10px;
     .memo-label {
       height: 20%;
@@ -53,7 +53,7 @@ const TodayEndContainer = styled.div`
     }
   }
   .todayend-submit {
-    background-color: #49d01c;
+    background-color: #aa77ff;
     position: absolute;
     right: 3%;
     bottom: 5%;
@@ -64,6 +64,11 @@ const TodayEndContainer = styled.div`
     border: none;
     border-radius: 10px;
     cursor: pointer;
+    &:hover {
+      transform: scale(1.1);
+      transition: all 0.2s;
+      border: 3px solid #620653;
+    }
   }
 `;
 interface TodayList {

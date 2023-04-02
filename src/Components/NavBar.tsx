@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { routes } from "../Pages/router";
-import catImg from "../img/cat.jpg";
+import ChickenImg from "../img/chicken.jpg";
 
 interface StylePropsType {
   isClick: boolean;
@@ -26,8 +26,9 @@ const NavBarContainer = styled.div`
     return props.isClick ? "0" : "-15%";
   }};
   top: 0;
-  background-color: #67eaff;
+  background-color: #ffcc81;
   transition: 0.5s;
+  border: 1px solid black;
   border-radius: 10px;
   overflow: hidden;
   .cat {
@@ -37,9 +38,10 @@ const NavBarContainer = styled.div`
     border: none;
     width: 100%;
     height: 15%;
-    background-color: #67eaff;
+    background-color: #ffcc81;
+    transition: 0.15s;
     &:hover {
-      background-color: #19a7ce;
+      background-color: #ffebb4;
     }
   }
 `;
@@ -56,13 +58,7 @@ const StyledLink = styled(Link)`
   color: black;
 `;
 
-const NavBar = ({
-  setHeadText,
-  setLoading,
-  loading,
-  isClick,
-  setIsClick,
-}: Props) => {
+const NavBar = ({ setHeadText, setLoading, loading, isClick, setIsClick }: Props) => {
   const handleLinkClick = (e: React.BaseSyntheticEvent) => {
     setIsClick(false);
     // Typeit text 삽입 코드
@@ -75,14 +71,10 @@ const NavBar = ({
   };
   return (
     <NavBarContainer isClick={isClick}>
-      <img src={catImg} alt="cat" className="cat" />
+      <img src={ChickenImg} alt="cat" className="cat" />
       {routes.map((el) => {
         return (
-          <button
-            key={el.path}
-            className="link-to"
-            onClick={(e) => handleLinkClick(e)}
-          >
+          <button key={el.path} className="link-to" onClick={(e) => handleLinkClick(e)}>
             <StyledLink to={el.path}>{el.name}</StyledLink>
           </button>
         );

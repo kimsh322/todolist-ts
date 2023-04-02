@@ -87,6 +87,7 @@ const CalenderDays = ({ curMonth }: Props) => {
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [curDayData, setCurDayData] = useState<EachDataObj>({ memo: "a", list: [] });
+  const [userData, setUserData] = useState<GetDataObj>({});
 
   //오늘인지 확인하는 함수
   const isToday = (a: Date, b: Date) => {
@@ -124,7 +125,6 @@ const CalenderDays = ({ curMonth }: Props) => {
     }
   }, [curDayData]);
 
-  const [userData, setUserData] = useState<GetDataObj>({});
   // 현재 유저 정보 가져오기
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
