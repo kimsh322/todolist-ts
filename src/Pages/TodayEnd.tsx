@@ -9,6 +9,7 @@ import { useEffect, useState } from "react";
 import Today from "../Components/Today";
 import TodayEndConfirmModal from "../Components/TodayEndConfirmModal";
 import { useNavigate } from "react-router-dom";
+import TodayEndFailModal from "../Components/TodayEndFailModal";
 
 const TodayEndContainer = styled.div`
   display: flex;
@@ -84,6 +85,7 @@ const TodayEnd = () => {
   const [memo, setMemo] = useState<string>("");
   const [todayConfirmList, setTodayConfirmList] = useState(initialTodayConfirmList);
   const [isConfirmModalOpen, setIsConfirmModalOpen] = useState(false);
+  const [isFailModalOpen, setIsFailModalOpen] = useState(false);
   const [currentUserUid, setCurrentUserUid] = useState("");
   const navigate = useNavigate();
   // 현재 유저 정보 가져오기
@@ -104,6 +106,7 @@ const TodayEnd = () => {
   };
 
   const handleSubmit = async () => {
+    // 로그인했을때만 데이터베이스에 저장
     if (todayConfirmList.length && currentUserUid !== "") {
       let text = memo;
       text = text.replace(/(?:\r\n|\r|\n)/g, "<br>"); // 엔터누르면 <br>로 바꿈
@@ -116,11 +119,13 @@ const TodayEnd = () => {
         console.log("Document written with ID: ", docRef);
         setIsConfirmModalOpen(true);
         localStorage.removeItem(format(new Date(), "P"));
-        setTimeout(() => navigate(0), 500);
+        setTimeout(() => navigate(0), 1000);
       } catch (e) {
         console.error("Error adding document: ", e);
       }
-    } else console.log("로그인하세요!");
+    } else {
+      setIsFailModalOpen(true);
+    }
   };
 
   return (
@@ -151,6 +156,7 @@ const TodayEnd = () => {
         완료!
       </button>
       {isConfirmModalOpen ? <TodayEndConfirmModal setIsConfirmModalOpen={setIsConfirmModalOpen} /> : null}
+      {isFailModalOpen ? <TodayEndFailModal setIsFailModalOpen={setIsFailModalOpen} /> : null}
     </TodayEndContainer>
   );
 };

@@ -29,34 +29,30 @@ const ModalView = styled.div`
   left: 50%;
   transform: translate(-50%, -50%);
   background: white;
-  width: 10%;
-  height: 10%;
+  width: 15%;
+  height: 15%;
   color: black;
   box-shadow: 2px 3px 5px 0;
-  border-radius: 3px;
+  border-radius: 10px;
+  .text {
+    font-size: 1.6em;
+  }
 `;
 
 interface Props {
-  isOpen: boolean;
-  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  setIsFailModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const TodayListModal = ({ isOpen, setIsOpen }: Props) => {
-  const closeModalHandler = () => {
-    setIsOpen(false);
-  };
-
+const TodayEndFailModal = ({ setIsFailModalOpen }: Props) => {
   return (
     <ModalContainer>
-      {isOpen ? (
-        <ModalBackdrop onClick={closeModalHandler}>
-          <ModalView>
-            <span>확정되었습니다!</span>
-          </ModalView>
-        </ModalBackdrop>
-      ) : null}
+      <ModalBackdrop onClick={() => setIsFailModalOpen(false)}>
+        <ModalView>
+          <span className="text">로그인 하세요!</span>
+        </ModalView>
+      </ModalBackdrop>
     </ModalContainer>
   );
 };
 
-export default TodayListModal;
+export default TodayEndFailModal;

@@ -4,9 +4,10 @@ import ListItem from "../Components/ListItem";
 import AddList from "../Components/AddList";
 import Today from "../Components/Today";
 import { useState } from "react";
-import TodayListModal from "../Components/TodayListModal";
+import TodayListModal from "../Components/TodayListSaveModal";
 import { format } from "date-fns";
 import { useNavigate } from "react-router-dom";
+import TodayListFailModal from "../Components/TodayListFailModal";
 
 const TodayListContainer = styled.ul`
   display: flex;
@@ -61,15 +62,19 @@ const TodayListContainer = styled.ul`
 
 const TodayList = () => {
   const todayList = useAppSelector((state) => state.todayList);
-  const [isOpen, setIsOpen] = useState(false);
+  const [isSaveModalOpen, setIsSaveModalOpen] = useState(false);
+  const [isFailModalOpen, setIsFailModalOpen] = useState(false);
   const navigate = useNavigate();
 
   const handleSubmit = () => {
-    if (todayList.length === 0) return;
-    setIsOpen(true);
+    if (todayList.length === 0) {
+      setIsFailModalOpen(true);
+      return;
+    }
+    setIsSaveModalOpen(true);
     localStorage.setItem(format(new Date(), "P"), JSON.stringify(todayList));
-    setTimeout(() => setIsOpen(false), 400);
-    setTimeout(() => navigate("/todayend"), 500);
+    setTimeout(() => setIsSaveModalOpen(false), 900);
+    setTimeout(() => navigate("/todayend"), 1000);
   };
 
   return (
@@ -84,7 +89,8 @@ const TodayList = () => {
       <button className="confirm" onClick={() => handleSubmit()}>
         확정하기!
       </button>
-      <TodayListModal isOpen={isOpen} setIsOpen={setIsOpen} />
+      <TodayListModal isSaveModalOpen={isSaveModalOpen} setIsSaveModalOpen={setIsSaveModalOpen} />
+      <TodayListFailModal isFailModalOpen={isFailModalOpen} setIsFailModalOpen={setIsFailModalOpen} />
     </TodayListContainer>
   );
 };

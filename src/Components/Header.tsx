@@ -39,8 +39,8 @@ const HeaderContainer = styled.div`
     cursor: pointer;
     right: 2%;
     bottom: 15%;
-    width: 4em;
-    height: 4em;
+    font-size: 4em;
+    color: black;
   }
 `;
 // typeit 폰트크기 조정

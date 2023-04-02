@@ -5,7 +5,7 @@ const MyPageContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: orange;
+  background-color: #daf5ff;
   width: 100%;
   height: 100%;
   .cat-img {
