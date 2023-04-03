@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import "animate.css";
+import Weather from "../Components/Weather";
 
 const MyPageContainer = styled.div`
   display: flex;
@@ -21,10 +22,7 @@ const MyPageContainer = styled.div`
 const MyPage = () => {
   return (
     <MyPageContainer>
-      <p>마이페이지에는 뭘 넣지</p>
-      <p>날씨 기능 시간남으면 넣기</p>
-      <p>로그아웃 기능 넣어야함</p>
-      <p>지금까지 작성한 todolist 개수 넣기</p>
+      <Weather />
     </MyPageContainer>
   );
 };

@@ -21,11 +21,6 @@ const MainPageContainer = styled.div`
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    p {
-      color: white;
-      mix-blend-mode: difference;
-      font-size: 2.5em;
-    }
   }
 `;
 
