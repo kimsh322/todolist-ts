@@ -12,6 +12,7 @@ const TodayContainer = styled.div`
   border-radius: 10px;
   overflow: hidden;
   box-shadow: 2px 3px 5px 0;
+  z-index: 1;
   .top {
     display: flex;
     justify-content: center;

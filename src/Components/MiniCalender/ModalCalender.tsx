@@ -18,7 +18,7 @@ const ModalBackdrop = styled.div`
   justify-content: center;
   align-items: center;
   border-radius: 5px;
-  z-index: 1;
+  z-index: 2;
 `;
 
 const ModalView = styled.div`

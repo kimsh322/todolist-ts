@@ -3,27 +3,24 @@ import styled from "styled-components";
 
 const WeatherContainer = styled.div`
   display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 70%;
-  height: 70%;
-  border-radius: 10px;
-  overflow: hidden;
-  .left-box {
-    width: 30%;
-    height: 100%;
-    background-color: orange;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  .weather-img {
+    width: 100%;
   }
-  .right-box {
-    width: 70%;
-    height: 100%;
-    background-color: white;
+  .weather-main {
+    font-size: 1.5em;
+  }
+  .weather-temp {
+    font-size: 2em;
   }
 `;
 
 interface Data {
   currentTemp: number;
   weatherIcon: string;
+  weatherMain: string;
 }
 
 const Weather = () => {
@@ -34,18 +31,22 @@ const Weather = () => {
       .then((data) => {
         const currentTemp = data.main.temp;
         const weatherIcon = data.weather[0].icon;
-        setWeatherData({ currentTemp, weatherIcon });
+        const weatherMain = data.weather[0].main;
+        setWeatherData({ currentTemp, weatherIcon, weatherMain });
       });
   }, []);
   return (
     <WeatherContainer>
-      <div className="left-box">
-        {weatherData ? (
-          <img src={`https://openweathermap.org/img/wn/${weatherData?.weatherIcon}@2x.png`} alt="weatherIcon" />
-        ) : null}
-        {weatherData ? <div>현재 기온은 {(weatherData?.currentTemp - 273.15).toFixed(1)} </div> : null}
-      </div>
-      <div className="right-box"></div>
+      <h3 className="weather-text"> 현재 날씨</h3>
+      {weatherData ? (
+        <img
+          className="weather-img"
+          src={`https://openweathermap.org/img/wn/${weatherData?.weatherIcon}@2x.png`}
+          alt="weatherIcon"
+        />
+      ) : null}
+      {weatherData ? <div className="weather-main">{weatherData.weatherMain}</div> : null}
+      {weatherData ? <div className="weather-temp">{(weatherData?.currentTemp - 273.15).toFixed(1)}℃ </div> : null}
     </WeatherContainer>
   );
 };

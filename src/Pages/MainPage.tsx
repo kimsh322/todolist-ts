@@ -5,6 +5,7 @@ import Login from "./Login";
 import MyPage from "./MyPage";
 import { useAppDispatch, useAppSelector } from "../store/reduxHooks";
 import { changeToSignIn } from "../store/logSlice";
+import Today from "../Components/Today";
 
 const MainPageContainer = styled.div`
   display: flex;
@@ -40,6 +41,7 @@ const MainPage = () => {
 
   return (
     <MainPageContainer>
+      <Today />
       {isSignIn ? <MyPage /> : <Login setIsOpen={setIsOpen} />}
       <SignIn isOpen={isOpen} setIsOpen={setIsOpen} />
     </MainPageContainer>

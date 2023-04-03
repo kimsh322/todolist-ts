@@ -83,7 +83,7 @@ type TodayListArr = TodayList[];
 const TodayEnd = () => {
   const todayItems = localStorage.getItem(format(new Date(), "P"));
   const initialTodayConfirmList: TodayListArr = todayItems ? JSON.parse(todayItems) : [];
-  const [memo, setMemo] = useState<string>("");
+  const [memo, setMemo] = useState("");
   const [todayConfirmList, setTodayConfirmList] = useState(initialTodayConfirmList);
   const [isConfirmModalOpen, setIsConfirmModalOpen] = useState(false);
   const [isFailModalOpen, setIsFailModalOpen] = useState(false);
