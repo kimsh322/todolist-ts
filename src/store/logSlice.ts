@@ -7,10 +7,13 @@ export const isSignInSlice = createSlice({
     changeToSignIn: () => {
       return true;
     },
+    changeToSignOut: () => {
+      return false;
+    },
   },
 });
 
-export const { changeToSignIn } = isSignInSlice.actions;
+export const { changeToSignIn, changeToSignOut } = isSignInSlice.actions;
 
 // 로그인정보
 export const userInfoSlice = createSlice({

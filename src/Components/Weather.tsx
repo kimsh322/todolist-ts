@@ -4,8 +4,10 @@ import styled from "styled-components";
 const WeatherContainer = styled.div`
   display: flex;
   flex-direction: column;
-  width: 100%;
+  width: 30%;
   height: 100%;
+  padding: 3% 0 0 3%;
+  background-color: #b9e9fc;
   .weather-img {
     width: 100%;
   }

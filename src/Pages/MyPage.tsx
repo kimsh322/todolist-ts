@@ -13,30 +13,13 @@ const MyPageContainer = styled.div`
   animation: slideInUp 1s;
   border-radius: 10px;
   overflow: hidden;
-  .left-box {
-    display: flex;
-    flex-direction: column;
-    width: 30%;
-    height: 100%;
-    padding: 3% 0 0 1%;
-    background-color: #b9e9fc;
-  }
-  .right-box {
-    width: 70%;
-    height: 100%;
-    background-color: white;
-  }
 `;
 
 const MyPage = () => {
   return (
     <MyPageContainer>
-      <div className="left-box">
-        <Weather />
-      </div>
-      <div className="right-box">
-        <MyPageContents />
-      </div>
+      <Weather />
+      <MyPageContents />
     </MyPageContainer>
   );
 };
