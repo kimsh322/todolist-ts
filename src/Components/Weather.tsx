@@ -25,8 +25,10 @@ interface Data {
 
 const Weather = () => {
   const [weatherData, setWeatherData] = useState<Data>();
+  const cityID = 1835848;
+  const authorize = process.env.REACT_APP_authorize;
   useEffect(() => {
-    fetch("https://api.openweathermap.org/data/2.5/weather?id=1835848&appid=fa617d936fde71460aa6aae2656168d1")
+    fetch(`https://api.openweathermap.org/data/2.5/weather?id=${cityID}&appid=${authorize}`)
       .then((res) => res.json())
       .then((data) => {
         const currentTemp = data.main.temp;
