@@ -1,5 +1,5 @@
 import { createGlobalStyle } from "styled-components";
-import sunFlare from "./img/sun-flare.jpg";
+import flowers from "./img/flowers.jpg";
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -26,7 +26,7 @@ const GlobalStyle = createGlobalStyle`
     justify-content: center;
     align-items: center;
     background-color: white;
-    background-image: url(${sunFlare});
+    background-image: url(${flowers});
     background-size : 100% 120%;
   }
   #root{

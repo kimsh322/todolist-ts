@@ -7,7 +7,7 @@ const WeatherContainer = styled.div`
   width: 30%;
   height: 100%;
   padding: 3% 0 0 3%;
-  background-color: #b9e9fc;
+  background-color: #ba90c6;
   .weather-img {
     width: 100%;
   }

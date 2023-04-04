@@ -14,7 +14,7 @@ const MainPageContainer = styled.div`
   width: 100%;
   height: 100%;
   position: relative;
-  background-color: #daf5ff;
+  background-color: #fdf4f5;
   .box {
     width: 80%;
     height: 80%;

@@ -1,10 +1,10 @@
 import styled from "styled-components";
 import { collection, getDocs } from "firebase/firestore";
 import { db, auth } from "../FireBase/firebase";
-import { onAuthStateChanged, signOut } from "firebase/auth";
+import { onAuthStateChanged } from "firebase/auth";
 import { useEffect, useState } from "react";
-import { useAppDispatch } from "../store/reduxHooks";
-import { changeToSignOut } from "../store/logSlice";
+import SignOutConfirmModal from "./SignOutComfirmModal";
+import springImg from "../img/spring.jpg";
 
 const MyPageContentsContainer = styled.div`
   display: flex;
@@ -13,12 +13,17 @@ const MyPageContentsContainer = styled.div`
   height: 100%;
   position: relative;
   padding: 3%;
-  background-color: #feff86;
+  background-image: url(${springImg});
+  background-size: cover;
   .hello {
     font-size: 2em;
+    margin-bottom: 10%;
   }
   .list-number {
+    display: flex;
+    justify-content: right;
     font-size: 2em;
+    margin-top: 5%;
   }
   .sign-out {
     position: absolute;
@@ -28,13 +33,16 @@ const MyPageContentsContainer = styled.div`
     height: 10%;
     font-size: 1.5em;
     border-radius: 10px;
+    cursor: pointer;
+    background-color: #c0dbea;
   }
 `;
 
 const MyPageContents = () => {
   const [listNum, setListNum] = useState(0);
   const [username, setUsername] = useState("");
-  const dispatch = useAppDispatch();
+  const [isConfirmSignOutModal, setIsConfirmSignOutModal] = useState(false);
+
   // 현재 유저 정보 가져오기
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
@@ -53,23 +61,16 @@ const MyPageContents = () => {
     const querySnapshot = await getDocs(collection(db, uid));
     setListNum(querySnapshot.size);
   };
-  // 로그아웃 처리
-  const handleSignOut = () => {
-    signOut(auth)
-      .then(() => {
-        dispatch(changeToSignOut());
-      })
-      .catch((error) => {});
-  };
 
   return (
     <MyPageContentsContainer>
       <span className="hello">반갑습니다 {username}님!</span>
-      <span className="list-number"> 지금까지 작성한 TodoList는 </span>
-      <span className="list-number">총 {listNum}개 입니다!</span>
-      <button className="sign-out" onClick={handleSignOut}>
+      <div className="list-number"> 지금까지 작성한 TodoList는 </div>
+      <div className="list-number">총 {listNum}개 입니다!</div>
+      <button className="sign-out" onClick={() => setIsConfirmSignOutModal(true)}>
         Sign out
       </button>
+      {isConfirmSignOutModal ? <SignOutConfirmModal setIsConfirmSignOutModal={setIsConfirmSignOutModal} /> : null}
     </MyPageContentsContainer>
   );
 };

@@ -1,5 +1,8 @@
 import styled from "styled-components";
-
+import { useAppDispatch } from "../store/reduxHooks";
+import { changeToSignOut } from "../store/logSlice";
+import { signOut } from "firebase/auth";
+import { auth } from "../FireBase/firebase";
 const ModalContainer = styled.div`
   display: flex;
 `;
@@ -51,20 +54,31 @@ const ModalView = styled.div`
   }
 `;
 interface Props {
-  setIsFailModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  setIsConfirmSignOutModal: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const SignOutConfirmModal = ({ setIsFailModalOpen }: Props) => {
-  const closeModalHandler = () => {
-    setIsFailModalOpen(false);
+const SignOutConfirmModal = ({ setIsConfirmSignOutModal }: Props) => {
+  const SignOutModalHandler = () => {
+    handleSignOut();
+    setIsConfirmSignOutModal(false);
+  };
+  const dispatch = useAppDispatch();
+
+  // 로그아웃 처리
+  const handleSignOut = () => {
+    signOut(auth)
+      .then(() => {
+        dispatch(changeToSignOut());
+      })
+      .catch((error) => {});
   };
 
   return (
     <ModalContainer>
-      <ModalBackdrop>
-        <ModalView>
+      <ModalBackdrop onClick={() => setIsConfirmSignOutModal(false)}>
+        <ModalView onClick={(e) => e.stopPropagation()}>
           <span className="message">로그아웃 하시겠습니까?</span>
-          <button className="confirm" onClick={closeModalHandler}>
+          <button className="confirm" onClick={SignOutModalHandler}>
             Yes!
           </button>
         </ModalView>
