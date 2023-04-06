@@ -54,8 +54,7 @@ const CreateId = () => {
 
   const handleSubmit = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault();
-    const validId =
-      /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/.test(id); // 이메일 형식인지 확인
+    const validId = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i.test(id); // 이메일 형식인지 확인
     if (!validId) setInvalidId(true);
     else if (password.length < 6) setInvalidPassword(true);
     else if (password !== passwordConfirm) setCoincide(false);
@@ -78,22 +77,12 @@ const CreateId = () => {
       </div>
       <div className="input-box">
         <label htmlFor="password">비밀번호</label>
-        <input
-          id="password"
-          type="password"
-          {...inputPassword}
-          onFocus={() => setInvalidPassword(false)}
-        ></input>
+        <input id="password" type="password" {...inputPassword} onFocus={() => setInvalidPassword(false)}></input>
         <span className="password-description">비밀번호는 6자리 이상이어야 합니다.</span>
       </div>
       <div className="input-box">
         <label htmlFor="password2">비밀번호확인</label>
-        <input
-          id="password2"
-          type="password"
-          {...inputPasswordConfirm}
-          onFocus={() => setCoincide(true)}
-        ></input>
+        <input id="password2" type="password" {...inputPasswordConfirm} onFocus={() => setCoincide(true)}></input>
         {coincide ? null : <span className="coincide">비밀번호가 일치하지 않습니다.</span>}
       </div>
       <button className="submit" onClick={(e) => handleSubmit(e)}>
