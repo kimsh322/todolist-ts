@@ -3,11 +3,11 @@ import { useAppSelector } from "../store/reduxHooks";
 import ListItem from "../Components/ListItem";
 import AddList from "../Components/AddList";
 import Today from "../Components/Today";
-import { useState } from "react";
-import TodayListSaveModal from "../Components/TodayListSaveModal";
 import { format } from "date-fns";
 import { useNavigate } from "react-router-dom";
-import TodayListFailModal from "../Components/IsNoListFailModal";
+import Modal from "../Components/Modal";
+import useModal from "../Components/customhook/useModal";
+import { ConfirmListModalContents, noListModalContents } from "../Components/ModalContents/TodayListModalContents";
 
 const TodayListContainer = styled.ul`
   display: flex;
@@ -54,26 +54,23 @@ const TodayListContainer = styled.ul`
       transition: all 0.2s;
       border: 3px solid #620653;
     }
-    /* &:active {
-      box-shadow: inset -0.3rem -0.1rem 1.4rem #3c1137, inset 0.3rem 0.4rem 0.8rem #3c1137;
-    } */
   }
 `;
 
 const TodayList = () => {
   const todayList = useAppSelector((state) => state.todayList);
-  const [isSaveModalOpen, setIsSaveModalOpen] = useState(false);
-  const [isFailModalOpen, setIsFailModalOpen] = useState(false);
+  const confirmContents = useModal(ConfirmListModalContents);
+  const noListContents = useModal(noListModalContents);
   const navigate = useNavigate();
 
   const handleSubmit = () => {
     if (todayList.length === 0) {
-      setIsFailModalOpen(true);
+      noListContents.setIsOpen(true);
       return;
     }
-    setIsSaveModalOpen(true);
+    confirmContents.setIsOpen(true);
     localStorage.setItem(format(new Date(), "P"), JSON.stringify(todayList));
-    setTimeout(() => setIsSaveModalOpen(false), 900);
+    setTimeout(() => confirmContents.setIsOpen(false), 900);
     setTimeout(() => navigate("/todayend"), 1000);
   };
 
@@ -89,8 +86,8 @@ const TodayList = () => {
       <button className="confirm" onClick={() => handleSubmit()}>
         확정하기!
       </button>
-      <TodayListSaveModal isSaveModalOpen={isSaveModalOpen} setIsSaveModalOpen={setIsSaveModalOpen} />
-      <TodayListFailModal isFailModalOpen={isFailModalOpen} setIsFailModalOpen={setIsFailModalOpen} />
+      <Modal {...confirmContents} />
+      <Modal {...noListContents} />
     </TodayListContainer>
   );
 };

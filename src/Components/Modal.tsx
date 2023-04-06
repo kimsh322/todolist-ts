@@ -17,7 +17,7 @@ const ModalBackdrop = styled.div`
   justify-content: center;
   align-items: center;
   border-radius: 5px;
-  z-index: 1;
+  z-index: 99;
 `;
 
 const ModalView = styled.div`
@@ -29,34 +29,34 @@ const ModalView = styled.div`
   left: 50%;
   transform: translate(-50%, -50%);
   background: white;
-  width: 10%;
-  height: 10%;
+  width: 15%;
+  height: 15%;
   color: black;
   box-shadow: 2px 3px 5px 0;
   border-radius: 3px;
 `;
 
 interface Props {
-  isSaveModalOpen: boolean;
-  setIsSaveModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  isOpen: boolean;
+  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  contents: JSX.Element;
 }
 
-const TodayListSaveModal = ({ isSaveModalOpen, setIsSaveModalOpen }: Props) => {
+const Modal = (props: Props) => {
+  const { isOpen, setIsOpen, contents } = props;
   const closeModalHandler = () => {
-    setIsSaveModalOpen(false);
+    setIsOpen(false);
   };
 
   return (
     <ModalContainer>
-      {isSaveModalOpen ? (
+      {isOpen ? (
         <ModalBackdrop onClick={closeModalHandler}>
-          <ModalView>
-            <span>확정되었습니다!</span>
-          </ModalView>
+          <ModalView>{contents}</ModalView>
         </ModalBackdrop>
       ) : null}
     </ModalContainer>
   );
 };
 
-export default TodayListSaveModal;
+export default Modal;
