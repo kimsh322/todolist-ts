@@ -10,24 +10,23 @@ const ItemLi = styled.li`
   display: flex;
   /* justify-content: center; */
   align-items: center;
-  height: 2.5em;
   border-width: 3px;
   border-style: solid;
   border-color: ${(props: StyleProps) => (props.isChecked ? "green" : "transparent")};
 
   .checkbox {
-    width: 5%;
-    height: 50%;
+    width: 1.5em;
+    height: 1.5em;
     position: absolute;
     right: 10px;
     cursor: pointer;
   }
-  span {
+  .text-box {
     display: flex;
+    width: 85%;
     align-items: center;
     margin-left: 10px;
     font-size: 1.8em;
-    height: 2em;
   }
 `;
 
@@ -60,7 +59,7 @@ const ConfirmList = ({ text, idx, todayConfirmList, setTodayConfirmList }: Props
   };
   return (
     <ItemLi isChecked={isChecked}>
-      <span>{text}</span>
+      <div className="text-box">{text}</div>
       <input type="checkbox" className="checkbox" onChange={() => handleChange()} />
     </ItemLi>
   );

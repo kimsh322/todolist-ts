@@ -58,7 +58,6 @@ const App = () => {
       break;
     }
   }
-
   const [headText, setHeadText] = useState<string>(initialHeadText);
   const [loading, setLoading] = useState<boolean>(true);
   const [isClick, setIsClick] = useState<boolean>(false);

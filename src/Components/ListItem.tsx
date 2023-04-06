@@ -23,18 +23,16 @@ const ItemLi = styled.li`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  height: 3em;
   animation: ${({ isRemove }: StyleProps) => (isRemove ? "flipOutX" : "flipInX")} 0.5s;
-  span {
+  .text-box {
     display: flex;
+    width: 80%;
     align-items: center;
     margin-left: 10px;
     font-size: 1.8em;
-    height: 2em;
   }
   .remove {
-    width: 10%;
-    height: 80%;
+    font-size: 2em;
     background-color: transparent;
     color: red;
     position: absolute;
@@ -58,7 +56,7 @@ const ListItem = ({ text, idx }: Props) => {
   };
   return (
     <ItemLi isRemove={isRemove}>
-      <span>{text}</span>
+      <div className="text-box">{text}</div>
       <TbXboxX className="remove" onClick={handleRemoveClick} />
     </ItemLi>
   );

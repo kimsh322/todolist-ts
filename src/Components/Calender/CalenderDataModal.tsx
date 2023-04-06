@@ -50,6 +50,9 @@ const ModalView = styled.div`
       list-style: none;
       font-size: 1.5em;
       margin-bottom: 1%;
+      .list-text {
+        width: 85%;
+      }
       .done {
         color: green;
       }
@@ -106,7 +109,7 @@ const CalenderDataModal = ({ curDayData, setIsModalOpen }: Props) => {
             {curDayData.list.map((el) => {
               return (
                 <li key={el.key} className="item-list">
-                  <span>{el.value}</span>
+                  <div className="list-text">{el.value}</div>
                   {el.done ? <VscCheck className="done" /> : <VscClose className="fail" />}
                 </li>
               );
