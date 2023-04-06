@@ -7,7 +7,7 @@ import { format } from "date-fns";
 import { useNavigate } from "react-router-dom";
 import Modal from "../Components/Modal";
 import useModal from "../Components/customhook/useModal";
-import { ConfirmListModalContents, noListModalContents } from "../Components/ModalContents/TodayListModalContents";
+import { confirmListModalContents, noListModalContents } from "../Components/ModalContents/todayListModalContents";
 
 const TodayListContainer = styled.ul`
   display: flex;
@@ -59,7 +59,7 @@ const TodayListContainer = styled.ul`
 
 const TodayList = () => {
   const todayList = useAppSelector((state) => state.todayList);
-  const confirmContents = useModal(ConfirmListModalContents);
+  const confirmContents = useModal(confirmListModalContents);
   const noListContents = useModal(noListModalContents);
   const navigate = useNavigate();
 

@@ -7,10 +7,11 @@ import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../FireBase/firebase";
 import { useEffect, useState } from "react";
 import Today from "../Components/Today";
-import TodayEndConfirmModal from "../Components/TodayEndConfirmModal";
 import { useNavigate } from "react-router-dom";
-import TodayEndFailModal from "../Components/TodayEndFailModal";
-import TodayListFailModal from "../Components/IsNoListFailModal";
+import Modal from "../Components/Modal";
+import useModal from "../Components/customhook/useModal";
+import { listStored, requireSignin } from "../Components/ModalContents/todayListModalContents";
+import { noListModalContents } from "../Components/ModalContents/todayListModalContents";
 
 const TodayEndContainer = styled.div`
   display: flex;
@@ -85,11 +86,12 @@ const TodayEnd = () => {
   const initialTodayConfirmList: TodayListArr = todayItems ? JSON.parse(todayItems) : [];
   const [memo, setMemo] = useState("");
   const [todayConfirmList, setTodayConfirmList] = useState(initialTodayConfirmList);
-  const [isConfirmModalOpen, setIsConfirmModalOpen] = useState(false);
-  const [isFailModalOpen, setIsFailModalOpen] = useState(false);
-  const [isNoListModalOpen, setIsNoListModalOpen] = useState(false);
   const [currentUserUid, setCurrentUserUid] = useState("");
+  const requireSigninContents = useModal(requireSignin);
+  const noListContents = useModal(noListModalContents);
+  const listStoredContents = useModal(listStored);
   const navigate = useNavigate();
+
   // 현재 유저 정보 가져오기
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
@@ -119,16 +121,16 @@ const TodayEnd = () => {
       try {
         const docRef = await setDoc(doc(db, currentUserUid, format(new Date(), "PP")), newObj);
         console.log("Document written with ID: ", docRef);
-        setIsConfirmModalOpen(true);
+        listStoredContents.setIsOpen(true);
         localStorage.removeItem(format(new Date(), "P"));
         setTimeout(() => navigate(0), 1000);
       } catch (e) {
         console.error("Error adding document: ", e);
       }
     } else if (currentUserUid === "") {
-      setIsFailModalOpen(true);
+      requireSigninContents.setIsOpen(true);
     } else {
-      setIsNoListModalOpen(true);
+      noListContents.setIsOpen(true);
     }
   };
 
@@ -159,11 +161,9 @@ const TodayEnd = () => {
       <button className="todayend-submit" onClick={() => handleSubmit()}>
         완료!
       </button>
-      {isConfirmModalOpen ? <TodayEndConfirmModal setIsConfirmModalOpen={setIsConfirmModalOpen} /> : null}
-      {isFailModalOpen ? <TodayEndFailModal setIsFailModalOpen={setIsFailModalOpen} /> : null}
-      {isNoListModalOpen ? (
-        <TodayListFailModal isFailModalOpen={isNoListModalOpen} setIsFailModalOpen={setIsNoListModalOpen} />
-      ) : null}
+      <Modal {...listStoredContents} />
+      <Modal {...requireSigninContents} />
+      <Modal {...noListContents} />
     </TodayEndContainer>
   );
 };
