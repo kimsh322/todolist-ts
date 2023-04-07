@@ -29,7 +29,13 @@ export const todayListSlice = createSlice({
         return true;
       });
     },
+    updateTodayList: (state, action: PayloadAction<TodayList>) => {
+      return state.map((el) => {
+        if (el.key === action.payload.key) return action.payload;
+        else return el;
+      });
+    },
   },
 });
 
-export const { setTodayList, removeTodayList } = todayListSlice.actions;
+export const { setTodayList, removeTodayList, updateTodayList } = todayListSlice.actions;

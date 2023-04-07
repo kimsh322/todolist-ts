@@ -61,6 +61,7 @@ const TodayList = () => {
   const todayList = useAppSelector((state) => state.todayList);
   const confirmContents = useModal(confirmListModalContents);
   const noListContents = useModal(noListModalContents);
+
   const navigate = useNavigate();
 
   const handleSubmit = () => {
@@ -80,7 +81,7 @@ const TodayList = () => {
       <AddList />
       <ul className="list-box">
         {todayList.map((el, idx) => {
-          return <ListItem key={el.key} text={el.value} idx={idx} />;
+          return <ListItem key={el.key} listKey={el.key} text={el.value} idx={idx} />;
         })}
       </ul>
       <button className="confirm" onClick={() => handleSubmit()}>

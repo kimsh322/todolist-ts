@@ -4,8 +4,11 @@ import { useAppDispatch } from "../store/reduxHooks";
 import "animate.css";
 import { useState } from "react";
 import { TbXboxX } from "react-icons/tb";
+import { FiEdit } from "react-icons/fi";
+import EditItem from "./EditItem";
 
 interface Props {
+  listKey: string;
   text: string;
   idx: number;
 }
@@ -23,6 +26,7 @@ const ItemLi = styled.li`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  padding: 0.2em 0;
   animation: ${({ isRemove }: StyleProps) => (isRemove ? "flipOutX" : "flipInX")} 0.5s;
   .text-box {
     display: flex;
@@ -31,33 +35,48 @@ const ItemLi = styled.li`
     margin-left: 10px;
     font-size: 1.8em;
   }
+  .edit {
+    position: absolute;
+    right: 7.5%;
+    font-size: 1.5em;
+    cursor: pointer;
+  }
   .remove {
-    font-size: 2em;
+    font-size: 1.5em;
     background-color: transparent;
     color: red;
     position: absolute;
-    right: 20px;
+    right: 1%;
     &:hover {
       cursor: pointer;
     }
   }
 `;
 
-const ListItem = ({ text, idx }: Props) => {
+const ListItem = ({ listKey, text, idx }: Props) => {
   const dispatch = useAppDispatch();
   const [isRemove, setIsRemove] = useState<boolean>(false);
-  const timeoutFunc = () => {
-    dispatch(removeTodayList(idx));
-    setIsRemove(false);
+  const [isEditFormOpen, setIsEditFormOpen] = useState(false);
+
+  const handleEditClick = () => {
+    setIsEditFormOpen(true);
   };
+
   const handleRemoveClick = () => {
     setIsRemove(true);
     setTimeout(() => timeoutFunc(), 500);
   };
+  const timeoutFunc = () => {
+    dispatch(removeTodayList(idx));
+    setIsRemove(false);
+  };
+
   return (
     <ItemLi isRemove={isRemove}>
       <div className="text-box">{text}</div>
+      <FiEdit className="edit" onClick={handleEditClick} />
       <TbXboxX className="remove" onClick={handleRemoveClick} />
+      {isEditFormOpen ? <EditItem listKey={listKey} setIsEditFormOpen={setIsEditFormOpen} /> : null}
     </ItemLi>
   );
 };
