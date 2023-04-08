@@ -2,7 +2,7 @@ import { useLocation, useOutlet } from "react-router-dom";
 import Header from "./Components/Header";
 import NavBar from "./Components/NavBar";
 import styled from "styled-components";
-import { routes } from "./Pages/router";
+import { routes } from "./Router/router";
 import { CSSTransition, SwitchTransition } from "react-transition-group";
 import { useState } from "react";
 

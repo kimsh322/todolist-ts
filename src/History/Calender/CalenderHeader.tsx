@@ -36,13 +36,25 @@ const CalenderHeaderContainer = styled.div`
     justify-content: center;
     align-items: center;
   }
-  .prev-month,
+  .prev-month {
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    border: none;
+    cursor: pointer;
+    .left-arrow {
+      font-size: 3.5em;
+    }
+  }
   .next-month {
     background-color: transparent;
     display: flex;
     justify-content: center;
     border: none;
     cursor: pointer;
+    .right-arrow {
+      font-size: 3.5em;
+    }
   }
 `;
 
@@ -59,13 +71,13 @@ const CalenderHeader = ({ curMonth, prevMonth, nextMonth }: Props) => {
         <span className="year">{format(curMonth, "yyyy")}</span>
       </div>
       <button className="prev-month" onClick={() => prevMonth()}>
-        <HiArrowCircleLeft size={50} />
+        <HiArrowCircleLeft className="left-arrow" />
       </button>
       <div className="date">
         <span className="month">{format(curMonth, "M")}월</span>
       </div>
       <button className="next-month" onClick={() => nextMonth()}>
-        <HiArrowCircleRight size={50} />
+        <HiArrowCircleRight className="right-arrow" />
       </button>
     </CalenderHeaderContainer>
   );

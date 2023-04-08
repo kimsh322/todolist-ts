@@ -5,7 +5,7 @@ import { setPersistence, signInWithEmailAndPassword, browserSessionPersistence }
 import { changeToSignIn } from "../store/logSlice";
 import { useAppDispatch } from "../store/reduxHooks";
 import { auth } from "../FireBase/firebase";
-import SignInFailModal from "../Components/SignInFailModal";
+import SignInFailModal from "./SignInFailModal";
 import { useState } from "react";
 
 const LoginContainer = styled.div`
@@ -99,7 +99,7 @@ const Login = ({ setIsOpen }: Props) => {
       .then(() => signInWithEmailAndPassword(auth, id, password))
       .then((userCredential) => {
         // 로그인 성공
-        const user = userCredential.user;
+        // const user = userCredential.user;
         // console.log(user);
         dispatch(changeToSignIn());
       })

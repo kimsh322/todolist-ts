@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { format } from "date-fns";
-import ConfirmList from "../Components/ConfirmList";
+import ConfirmList from "./ConfirmList";
 import { doc, setDoc } from "firebase/firestore";
 import { db } from "../FireBase/firebase";
 import { onAuthStateChanged } from "firebase/auth";
@@ -8,7 +8,7 @@ import { auth } from "../FireBase/firebase";
 import { useEffect, useState } from "react";
 import Today from "../Components/Today";
 import { useNavigate } from "react-router-dom";
-import Modal from "../Components/Modal";
+import Modal from "../Components/ModalContents/Modal";
 import useModal from "../Components/customhook/useModal";
 import { listStored, requireSignin } from "../Components/ModalContents/todayListModalContents";
 import { noListModalContents } from "../Components/ModalContents/todayListModalContents";

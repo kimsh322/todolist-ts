@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import CreateId from "../Components/CreateId";
+import CreateId from "./CreateId";
 
 const SignInContainer = styled.div`
   display: flex;

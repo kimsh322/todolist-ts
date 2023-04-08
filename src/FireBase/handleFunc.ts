@@ -9,8 +9,11 @@ export const handleCreateId = (
   createUserWithEmailAndPassword(auth, id, password)
     .then((userCredential) => {
       // id 생성
-      const user = userCredential.user;
-      console.log(user);
+      // const user = userCredential.user;
+      // console.log(user);
     })
-    .then(() => setCreateSuccess(true));
+    .then(() => setCreateSuccess(true))
+    .catch((error) => {
+      console.log(error);
+    });
 };

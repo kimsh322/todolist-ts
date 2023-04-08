@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { routes } from "../Pages/router";
+import { routes } from "../Router/router";
 import ChickenImg from "../img/chicken.jpg";
 
 interface StylePropsType {

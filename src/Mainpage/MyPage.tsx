@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import "animate.css";
-import Weather from "../Components/Weather";
-import MyPageContents from "../Components/MyPageContents";
+import Weather from "./Weather";
+import MyPageContents from "./MyPageContents";
 
 const MyPageContainer = styled.div`
   display: flex;

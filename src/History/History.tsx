@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Calender from "../Components/Calender/Calender";
+import Calender from "./Calender/Calender";
 
 const HistoryContainer = styled.div`
   width: 100%;
