@@ -44,14 +44,14 @@ const AddListContainer = styled.form`
 `;
 
 const AddList = () => {
-  const inputText = useInput("");
+  const [inputTextBind, setInputText] = useInput("");
   const dispatch = useAppDispatch();
   // submit 버튼 handler
   const handleAddClick = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     event.preventDefault();
-    if (inputText) {
-      dispatch(setTodayList(inputText.value)); // item TodayList store에 저장
-      inputText.setValue("");
+    if (inputTextBind.value) {
+      dispatch(setTodayList(inputTextBind.value)); // item TodayList store에 저장
+      setInputText("");
     }
   };
 
@@ -59,7 +59,7 @@ const AddList = () => {
     // form 태그
     <AddListContainer>
       <span className="add-box-text">할 일 추가 : </span>
-      <input className="add-input" {...inputText} />
+      <input className="add-input" {...inputTextBind} />
       <button className="add-button" onClick={(e) => handleAddClick(e)}>
         <IoMdAddCircleOutline className="add-button-img" />
       </button>

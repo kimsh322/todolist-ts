@@ -1,15 +1,20 @@
 import { useState } from "react";
 
+type ReturnArr = [
+  { value: string; onChange: (e: React.ChangeEvent<HTMLInputElement>) => void },
+  React.Dispatch<React.SetStateAction<string>>
+];
+
 const useInput = (initialValue: string) => {
   const [value, setValue] = useState(initialValue);
   const bind = {
     value,
-    setValue,
     onChange: (e: React.ChangeEvent<HTMLInputElement>) => {
       setValue(e.target.value);
     },
   };
-  return bind;
+  const returnArr: ReturnArr = [bind, setValue];
+  return returnArr;
 };
 
 export default useInput;
