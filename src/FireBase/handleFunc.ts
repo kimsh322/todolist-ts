@@ -1,11 +1,7 @@
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { auth } from "./firebase";
+import { auth } from "./firebaseApp";
 
-export const handleCreateId = (
-  id: string,
-  password: string,
-  setCreateSuccess: React.Dispatch<React.SetStateAction<boolean>>
-) => {
+export const handleCreateId = (id: string, password: string, setCreateSuccess: React.Dispatch<React.SetStateAction<boolean>>) => {
   createUserWithEmailAndPassword(auth, id, password)
     .then((userCredential) => {
       // id 생성

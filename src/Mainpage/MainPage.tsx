@@ -5,7 +5,7 @@ import Login from "./Login";
 import MyPage from "./MyPage";
 import { useAppDispatch, useAppSelector } from "../store/reduxHooks";
 import { changeToSignIn } from "../store/logSlice";
-import Today from "../Components/Today";
+import Today from "../components/Today";
 
 const MainPageContainer = styled.div`
   display: flex;

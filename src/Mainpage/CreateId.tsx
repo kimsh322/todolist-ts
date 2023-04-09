@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { useState } from "react";
-import useInput from "../Components/customhook/useInput";
-import { handleCreateId } from "../FireBase/handleFunc";
+import useInput from "../components/customhook/useInput";
+import { handleCreateId } from "../fireBase/handleFunc";
 import CreateSuccess from "./CreateSuccess";
 
 interface StyleProps {

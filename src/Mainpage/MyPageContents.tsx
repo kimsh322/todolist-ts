@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { collection, getDocs } from "firebase/firestore";
-import { db, auth } from "../FireBase/firebase";
+import { db, auth } from "../fireBase/firebaseApp";
 import { onAuthStateChanged } from "firebase/auth";
 import { useEffect, useState } from "react";
 import SignOutConfirmModal from "./SignOutComfirmModal";

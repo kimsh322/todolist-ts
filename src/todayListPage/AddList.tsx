@@ -2,7 +2,7 @@ import { IoMdAddCircleOutline } from "react-icons/io";
 import { setTodayList } from "../store/itemSlice";
 import { useAppDispatch } from "../store/reduxHooks";
 import styled from "styled-components";
-import useInput from "../Components/customhook/useInput";
+import useInput from "../components/customhook/useInput";
 
 const AddListContainer = styled.form`
   display: flex;

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { startOfMonth, endOfMonth, startOfWeek, endOfWeek, addDays, format } from "date-fns";
 import { collection, getDocs } from "firebase/firestore";
-import { db, auth } from "../../FireBase/firebase";
+import { db, auth } from "../../fireBase/firebaseApp";
 import { useState, useEffect } from "react";
 import { onAuthStateChanged } from "firebase/auth";
 import { GiDisc } from "react-icons/gi";

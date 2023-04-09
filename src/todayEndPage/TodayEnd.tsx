@@ -2,17 +2,17 @@ import styled from "styled-components";
 import { format } from "date-fns";
 import ConfirmList from "./ConfirmList";
 import { doc, setDoc } from "firebase/firestore";
-import { db } from "../FireBase/firebase";
+import { db } from "../fireBase/firebaseApp";
 import { onAuthStateChanged } from "firebase/auth";
-import { auth } from "../FireBase/firebase";
+import { auth } from "../fireBase/firebaseApp";
 import { useEffect, useState } from "react";
-import Today from "../Components/Today";
+import Today from "../components/Today";
 import { useNavigate } from "react-router-dom";
-import Modal from "../Components/ModalContents/Modal";
-import useModal from "../Components/customhook/useModal";
-import { listStored, requireSignin } from "../Components/ModalContents/todayListModalContents";
-import { noListModalContents } from "../Components/ModalContents/todayListModalContents";
-import useInput from "../Components/customhook/useInput";
+import Modal from "../components/modalContents/Modal";
+import useModal from "../components/customhook/useModal";
+import { listStored, requireSignin } from "../components/modalContents/todayListModalContents";
+import { noListModalContents } from "../components/modalContents/todayListModalContents";
+import useInput from "../components/customhook/useInput";
 
 const TodayEndContainer = styled.div`
   display: flex;

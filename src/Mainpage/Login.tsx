@@ -1,10 +1,10 @@
 import styled from "styled-components";
-import useInput from "../Components/customhook/useInput";
+import useInput from "../components/customhook/useInput";
 import catImg from "../img/cat.jpg";
 import { setPersistence, signInWithEmailAndPassword, browserSessionPersistence } from "firebase/auth";
 import { changeToSignIn } from "../store/logSlice";
 import { useAppDispatch } from "../store/reduxHooks";
-import { auth } from "../FireBase/firebase";
+import { auth } from "../fireBase/firebaseApp";
 import SignInFailModal from "./SignInFailModal";
 import { useState } from "react";
 

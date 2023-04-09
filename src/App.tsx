@@ -1,8 +1,8 @@
 import { useLocation, useOutlet } from "react-router-dom";
-import Header from "./Components/Header";
-import NavBar from "./Components/NavBar";
+import Header from "./components/Header";
+import NavBar from "./components/NavBar";
 import styled from "styled-components";
-import { routes } from "./Router/router";
+import { routes } from "./router/routers";
 import { CSSTransition, SwitchTransition } from "react-transition-group";
 import { useState } from "react";
 

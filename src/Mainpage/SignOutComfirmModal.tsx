@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { useAppDispatch } from "../store/reduxHooks";
 import { changeToSignOut } from "../store/logSlice";
 import { signOut } from "firebase/auth";
-import { auth } from "../FireBase/firebase";
+import { auth } from "../fireBase/firebaseApp";
 const ModalContainer = styled.div`
   display: flex;
 `;

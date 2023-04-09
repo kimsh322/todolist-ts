@@ -3,7 +3,7 @@ import TypeIt from "typeit-react";
 import { BsCalendarCheck } from "react-icons/bs";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { useState } from "react";
-import ModalCalender from "./MiniCalender/ModalCalender";
+import ModalCalender from "./miniCalender/ModalCalender";
 
 interface Props {
   headText: string;

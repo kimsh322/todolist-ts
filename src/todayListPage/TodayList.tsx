@@ -2,12 +2,12 @@ import styled from "styled-components";
 import { useAppSelector } from "../store/reduxHooks";
 import ListItem from "./ListItem";
 import AddList from "./AddList";
-import Today from "../Components/Today";
+import Today from "../components/Today";
 import { format } from "date-fns";
 import { useNavigate } from "react-router-dom";
-import Modal from "../Components/ModalContents/Modal";
-import useModal from "../Components/customhook/useModal";
-import { confirmListModalContents, noListModalContents } from "../Components/ModalContents/todayListModalContents";
+import Modal from "../components/modalContents/Modal";
+import useModal from "../components/customhook/useModal";
+import { confirmListModalContents, noListModalContents } from "../components/modalContents/todayListModalContents";
 
 const TodayListContainer = styled.ul`
   display: flex;
