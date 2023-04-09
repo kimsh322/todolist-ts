@@ -70,6 +70,7 @@ const ModalView = styled.div`
     overflow-y: scroll;
     border-radius: 0 0 10px 10px;
     white-space: pre-line;
+    word-wrap: break-word;
     &::-webkit-scrollbar {
       display: none;
     }
