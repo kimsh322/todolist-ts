@@ -1,5 +1,5 @@
 import { createRef } from "react";
-import MainPage from "../mainpage/MainPage";
+import MainPage from "../entrancePage/MainPage";
 import TodayEnd from "../todayEndPage/TodayEnd";
 import TodayList from "../todayListPage/TodayList";
 import History from "../historyPage/History";
