@@ -27,7 +27,7 @@ interface Data {
 
 const Weather = () => {
   const [weatherData, setWeatherData] = useState<Data>();
-  const cityID = 1835848;
+  const cityID = 1835848; // 서울 ID
   const authorize = process.env.REACT_APP_authorize;
   useEffect(() => {
     fetch(`https://api.openweathermap.org/data/2.5/weather?id=${cityID}&appid=${authorize}`)
@@ -43,14 +43,16 @@ const Weather = () => {
     <WeatherContainer>
       <h3 className="weather-text"> 현재 날씨</h3>
       {weatherData ? (
-        <img
-          className="weather-img"
-          src={`https://openweathermap.org/img/wn/${weatherData?.weatherIcon}@2x.png`}
-          alt="weatherIcon"
-        />
+        <>
+          <img
+            className="weather-img"
+            src={`https://openweathermap.org/img/wn/${weatherData?.weatherIcon}@2x.png`}
+            alt="weatherIcon"
+          />
+          <div className="weather-main">{weatherData.weatherMain}</div>
+          <div className="weather-temp">{(weatherData?.currentTemp - 273.15).toFixed(1)}℃ </div>
+        </>
       ) : null}
-      {weatherData ? <div className="weather-main">{weatherData.weatherMain}</div> : null}
-      {weatherData ? <div className="weather-temp">{(weatherData?.currentTemp - 273.15).toFixed(1)}℃ </div> : null}
     </WeatherContainer>
   );
 };

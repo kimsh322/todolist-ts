@@ -1,12 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { todayListSlice } from "./itemSlice";
-import { isSignInSlice, userInfoSlice } from "./logSlice";
+import { isSignInSlice } from "./logSlice";
 
 export const store = configureStore({
   reducer: {
     todayList: todayListSlice.reducer,
     isSignIn: isSignInSlice.reducer,
-    userInfo: userInfoSlice.reducer,
   },
 });
 

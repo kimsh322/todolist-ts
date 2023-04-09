@@ -8,7 +8,6 @@ const ItemLi = styled.li`
   border-radius: 10px;
   background-color: white;
   display: flex;
-  /* justify-content: center; */
   align-items: center;
   border-width: 3px;
   border-style: solid;

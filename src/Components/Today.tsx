@@ -33,7 +33,7 @@ const TodayContainer = styled.div`
     font-size: 3.3em;
   }
 `;
-
+// 오늘 날짜 보여주는 달력 컴포넌트
 const Today = () => {
   return (
     <TodayContainer>

@@ -12,6 +12,7 @@ import Modal from "../Components/ModalContents/Modal";
 import useModal from "../Components/customhook/useModal";
 import { listStored, requireSignin } from "../Components/ModalContents/todayListModalContents";
 import { noListModalContents } from "../Components/ModalContents/todayListModalContents";
+import useInput from "../Components/customhook/useInput";
 
 const TodayEndContainer = styled.div`
   display: flex;
@@ -84,7 +85,7 @@ type TodayListArr = TodayList[];
 const TodayEnd = () => {
   const todayItems = localStorage.getItem(format(new Date(), "P"));
   const initialTodayConfirmList: TodayListArr = todayItems ? JSON.parse(todayItems) : [];
-  const [memo, setMemo] = useState("");
+  const [memoBind] = useInput("");
   const [todayConfirmList, setTodayConfirmList] = useState(initialTodayConfirmList);
   const [currentUserUid, setCurrentUserUid] = useState("");
   const requireSigninContents = useModal(requireSignin);
@@ -105,14 +106,10 @@ const TodayEnd = () => {
     });
   }, []);
 
-  const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    setMemo(e.target.value);
-  };
-
   const handleSubmit = async () => {
     // 로그인했을때만 데이터베이스에 저장
     if (todayConfirmList.length && currentUserUid !== "") {
-      let text = memo;
+      let text = memoBind.value;
       text = text.replace(/(?:\r\n|\r|\n)/g, "<br>"); // 엔터누르면 <br>로 바꿈
       const newObj = {
         list: todayConfirmList,
@@ -156,7 +153,7 @@ const TodayEnd = () => {
         <label htmlFor="story" className="memo-label">
           메모하기
         </label>
-        <textarea id="story" name="story" value={memo} onChange={(e) => handleChange(e)}></textarea>
+        <textarea id="story" name="story" {...memoBind}></textarea>
       </div>
       <button className="todayend-submit" onClick={() => handleSubmit()}>
         완료!

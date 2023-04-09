@@ -16,14 +16,14 @@ export const isSignInSlice = createSlice({
 export const { changeToSignIn, changeToSignOut } = isSignInSlice.actions;
 
 // 로그인정보
-export const userInfoSlice = createSlice({
-  name: "userInfo",
-  initialState: {},
-  reducers: {
-    setUserInfo: (state, action) => {
-      return action.payload;
-    },
-  },
-});
+// export const userInfoSlice = createSlice({
+//   name: "userInfo",
+//   initialState: {},
+//   reducers: {
+//     setUserInfo: (state, action) => {
+//       return action.payload;
+//     },
+//   },
+// });
 
-export const { setUserInfo } = userInfoSlice.actions;
+// export const { setUserInfo } = userInfoSlice.actions;

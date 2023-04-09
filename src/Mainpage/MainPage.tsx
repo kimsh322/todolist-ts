@@ -27,10 +27,11 @@ const MainPageContainer = styled.div`
 
 const MainPage = () => {
   const isSignIn = useAppSelector((state) => state.isSignIn);
-  const [isOpen, setIsOpen] = useState(false);
-  const apiKey = process.env.REACT_APP_apiKey;
   const dispatch = useAppDispatch();
+  const [isOpen, setIsOpen] = useState(false);
+
   // 세션 스토리지에 로그인 기록이 있으면 가져온다.
+  const apiKey = process.env.REACT_APP_apiKey;
   const _session_key = `firebase:authUser:${apiKey}:[DEFAULT]`;
   const is_session = sessionStorage.getItem(_session_key) ? true : false;
   useEffect(() => {

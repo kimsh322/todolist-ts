@@ -10,6 +10,8 @@ interface TodayList {
 type TodayListArr = TodayList[];
 
 const initialState: TodayListArr = [];
+
+// 작성한 todolist 저장,수정,삭제
 export const todayListSlice = createSlice({
   name: "todaylist",
   initialState,

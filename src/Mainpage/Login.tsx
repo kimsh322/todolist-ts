@@ -88,15 +88,13 @@ interface Props {
 const Login = ({ setIsOpen }: Props) => {
   const [inputId] = useInput("");
   const [inputPassword] = useInput("");
-  const id = inputId.value;
-  const password = inputPassword.value;
   const dispatch = useAppDispatch();
   const [isFailModalOpen, setIsFailModalOpen] = useState(false);
 
   // 로그인 함수
   const handleSignInButtonClick = () => {
     setPersistence(auth, browserSessionPersistence) // 세션에 로그인 정보 저장
-      .then(() => signInWithEmailAndPassword(auth, id, password))
+      .then(() => signInWithEmailAndPassword(auth, inputId.value, inputPassword.value))
       .then((userCredential) => {
         // 로그인 성공
         // const user = userCredential.user;
@@ -108,7 +106,7 @@ const Login = ({ setIsOpen }: Props) => {
         // const errorCode = error.code;
         const errorMessage = error.message;
         console.log(errorMessage);
-        setIsFailModalOpen(true);
+        setIsFailModalOpen(true); //로그인 실패 메시지
       });
   };
 

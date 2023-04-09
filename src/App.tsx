@@ -39,7 +39,6 @@ const MainContainer = styled.div`
 
   .fade-exit {
     opacity: 1;
-    /* transform: translateX(0%); */
   }
 
   .fade-exit-active {
@@ -71,13 +70,7 @@ const App = () => {
   return (
     <MainContainer onClick={handleNavBar}>
       <Header headText={headText} loading={loading} isClick={isClick} setIsClick={setIsClick} />
-      <NavBar
-        setHeadText={setHeadText}
-        setLoading={setLoading}
-        loading={loading}
-        isClick={isClick}
-        setIsClick={setIsClick}
-      />
+      <NavBar setHeadText={setHeadText} setLoading={setLoading} loading={loading} isClick={isClick} setIsClick={setIsClick} />
       <SwitchTransition>
         <CSSTransition key={location.pathname} nodeRef={nodeRef} timeout={500} classNames="fade" unmountOnExit>
           {() => (
