@@ -17,7 +17,6 @@ interface Props {
 const NavBarContainer = styled.div`
   display: flex;
   flex-direction: column;
-  /* justify-content: space-around; */
   position: absolute;
   width: 15%;
   height: 100%;
@@ -31,8 +30,19 @@ const NavBarContainer = styled.div`
   border: 1px solid black;
   border-radius: 10px;
   overflow: hidden;
-  .cat {
+
+  @media screen and (max-width: 600px) {
+    width: 30%;
+    left: ${(props: StylePropsType) => {
+      return props.isClick ? "0" : "-30%";
+    }};
+  }
+
+  .chicken {
     cursor: pointer;
+    @media screen and (max-width: 600px) {
+      margin-top: 10%;
+    }
   }
   .link-to {
     border: none;
@@ -71,7 +81,7 @@ const NavBar = ({ setHeadText, setLoading, loading, isClick, setIsClick }: Props
   };
   return (
     <NavBarContainer isClick={isClick}>
-      <img src={ChickenImg} alt="cat" className="cat" />
+      <img src={ChickenImg} alt="chicken" className="chicken" />
       {routes.map((el) => {
         return (
           <button key={el.path} className="link-to" onClick={(e) => handleLinkClick(e)}>

@@ -13,6 +13,9 @@ const TodayContainer = styled.div`
   overflow: hidden;
   box-shadow: 2px 3px 5px 0;
   z-index: 1;
+  @media screen and (max-width: 600px) {
+    width: 20%;
+  }
   .top {
     display: flex;
     justify-content: center;

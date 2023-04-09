@@ -23,20 +23,43 @@ const LoginContainer = styled.div`
     height: 70%;
     padding: 5% 0;
     border-radius: 0 10px 10px 0;
+
+    @media screen and (max-width: 600px) {
+      width: 100%;
+      height: 100%;
+      background-image: url(${catImg});
+      background-size: 130% 75%;
+      background-position: 50% 0;
+      background-repeat: no-repeat;
+      background-color: #68e9ff;
+      border-radius: 0;
+    }
+
     .header-text {
       margin-bottom: 3%;
       font-size: 3em;
+      @media screen and (max-width: 600px) {
+        margin-bottom: 10%;
+      }
     }
     .input-box {
       width: 70%;
       height: 20%;
       margin: 3% 0;
       padding: 0;
+      @media screen and (max-width: 600px) {
+        height: 15%;
+      }
       #id,
       #password {
         width: 100%;
         height: 100%;
         font-size: 1.3em;
+        @media screen and (max-width: 600px) {
+          opacity: 0.8;
+          color: black;
+          font-size: 2em;
+        }
       }
     }
     .sign-in-button {
@@ -47,6 +70,11 @@ const LoginContainer = styled.div`
       background-color: #159895;
       border-radius: 5px;
       cursor: pointer;
+      @media screen and (max-width: 600px) {
+        height: 12%;
+        font-size: 3em;
+        margin-bottom: 5%;
+      }
     }
   }
 
@@ -58,14 +86,29 @@ const LoginContainer = styled.div`
     background-color: #68e9ff;
     border-radius: 10px 0 0 10px;
     overflow: hidden;
+
+    @media screen and (max-width: 600px) {
+      display: none;
+    }
+
     .cat-img {
       width: 100%;
     }
   }
   .sign-up-container {
     width: 70%;
+    @media screen and (max-width: 600px) {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+    }
     .sign-up-text {
       font-size: 1.3em;
+      @media screen and (max-width: 600px) {
+        margin-top: 10%;
+        font-size: 2.5em;
+      }
     }
     .sign-up {
       width: 40%;
@@ -77,6 +120,9 @@ const LoginContainer = styled.div`
       border: none;
       background-color: transparent;
       cursor: pointer;
+      @media screen and (max-width: 600px) {
+        font-size: 2.5em;
+      }
     }
   }
 `;

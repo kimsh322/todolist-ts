@@ -32,6 +32,10 @@ const HeaderContainer = styled.div`
     width: 3em;
     height: 3em;
     cursor: pointer;
+    @media screen and (max-width: 600px) {
+      bottom: 30%;
+      left: 5%;
+    }
   }
 
   .calender {
@@ -41,6 +45,9 @@ const HeaderContainer = styled.div`
     bottom: 15%;
     font-size: 4em;
     color: black;
+    @media screen and (max-width: 600px) {
+      bottom: 25%;
+    }
   }
 `;
 // typeit 폰트크기 조정

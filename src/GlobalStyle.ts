@@ -7,9 +7,19 @@ const GlobalStyle = createGlobalStyle`
     margin : 0;
     font-family: 'KOTRAHOPE';
   }
-  @media screen and (max-width: 900px) {
+  @media screen and (max-width: 600px) {
+    * {
+      font-size: 14px;
+    }
+  }
+  @media screen and (max-width: 370px) {
     * {
       font-size: 12px;
+    }
+  }
+  @media screen and (max-width: 300px) {
+    * {
+      font-size: 10px;
     }
   }
   @font-face {
@@ -41,9 +51,10 @@ const GlobalStyle = createGlobalStyle`
       font-size: 12px;
     }
   }
-  @media screen and (max-width: 900px) {
+  @media screen and (max-width: 600px) {
     #root {
       width: 100%;
+      height : 100%;
     }
   }
 `;
