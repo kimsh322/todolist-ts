@@ -45,12 +45,12 @@ const CreateId = () => {
   const [coincide, setCoincide] = useState(true);
   const [createSuccess, setCreateSuccess] = useState(false);
   const [invalidPassword, setInvalidPassword] = useState(false);
-  const inputId = useInput("");
-  const inputPassword = useInput("");
-  const inputPasswordConfirm = useInput("");
-  const id = inputId[0].value;
-  const password = inputPassword[0].value;
-  const passwordConfirm = inputPasswordConfirm[0].value;
+  const [inputId] = useInput("");
+  const [inputPassword] = useInput("");
+  const [inputPasswordConfirm] = useInput("");
+  const id = inputId.value;
+  const password = inputPassword.value;
+  const passwordConfirm = inputPasswordConfirm.value;
 
   const handleSubmit = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault();
@@ -68,7 +68,7 @@ const CreateId = () => {
       <h2>회원가입</h2>
       <div className="input-box">
         <label htmlFor="id">ID</label>
-        <input id="id" {...inputId[0]} onFocus={() => setInvalidId(false)}></input>
+        <input id="id" {...inputId} onFocus={() => setInvalidId(false)}></input>
         {invalidId ? (
           <span className="invalid">유효하지 않은 id 입니다</span>
         ) : (
@@ -77,12 +77,12 @@ const CreateId = () => {
       </div>
       <div className="input-box">
         <label htmlFor="password">비밀번호</label>
-        <input id="password" type="password" {...inputPassword[0]} onFocus={() => setInvalidPassword(false)}></input>
+        <input id="password" type="password" {...inputPassword} onFocus={() => setInvalidPassword(false)}></input>
         <span className="password-description">비밀번호는 6자리 이상이어야 합니다.</span>
       </div>
       <div className="input-box">
         <label htmlFor="password2">비밀번호확인</label>
-        <input id="password2" type="password" {...inputPasswordConfirm[0]} onFocus={() => setCoincide(true)}></input>
+        <input id="password2" type="password" {...inputPasswordConfirm} onFocus={() => setCoincide(true)}></input>
         {coincide ? null : <span className="coincide">비밀번호가 일치하지 않습니다.</span>}
       </div>
       <button className="submit" onClick={(e) => handleSubmit(e)}>

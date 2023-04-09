@@ -86,10 +86,10 @@ interface Props {
 }
 
 const Login = ({ setIsOpen }: Props) => {
-  const inputId = useInput("");
-  const inputPassword = useInput("");
-  const id = inputId[0].value;
-  const password = inputPassword[0].value;
+  const [inputId] = useInput("");
+  const [inputPassword] = useInput("");
+  const id = inputId.value;
+  const password = inputPassword.value;
   const dispatch = useAppDispatch();
   const [isFailModalOpen, setIsFailModalOpen] = useState(false);
 
@@ -123,10 +123,10 @@ const Login = ({ setIsOpen }: Props) => {
       <div className="right-box">
         <span className="header-text">Login</span>
         <div className="input-box">
-          <input id="id" {...inputId[0]} placeholder="E-mail"></input>
+          <input id="id" {...inputId} placeholder="E-mail"></input>
         </div>
         <div className="input-box">
-          <input id="password" type="password" {...inputPassword[0]} placeholder="password"></input>
+          <input id="password" type="password" {...inputPassword} placeholder="password"></input>
         </div>
         <button className="sign-in-button" onClick={handleSignInButtonClick}>
           Sign in
