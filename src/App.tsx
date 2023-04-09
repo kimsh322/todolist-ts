@@ -80,7 +80,7 @@ const App = () => {
       />
       <SwitchTransition>
         <CSSTransition key={location.pathname} nodeRef={nodeRef} timeout={500} classNames="fade" unmountOnExit>
-          {(state) => (
+          {() => (
             <div ref={nodeRef} className="fade">
               {currentOutlet}
             </div>

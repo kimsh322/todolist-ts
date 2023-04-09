@@ -4,6 +4,7 @@ const useInput = (initialValue: string) => {
   const [value, setValue] = useState(initialValue);
   const bind = {
     value,
+    setValue,
     onChange: (e: React.ChangeEvent<HTMLInputElement>) => {
       setValue(e.target.value);
     },

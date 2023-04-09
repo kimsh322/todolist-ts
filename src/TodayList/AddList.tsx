@@ -1,8 +1,8 @@
-import { useState } from "react";
 import { IoMdAddCircleOutline } from "react-icons/io";
 import { setTodayList } from "../store/itemSlice";
 import { useAppDispatch } from "../store/reduxHooks";
 import styled from "styled-components";
+import useInput from "../Components/customhook/useInput";
 
 const AddListContainer = styled.form`
   display: flex;
@@ -44,17 +44,14 @@ const AddListContainer = styled.form`
 `;
 
 const AddList = () => {
-  const [inputText, setInputText] = useState<string>("");
+  const inputText = useInput("");
   const dispatch = useAppDispatch();
-  const handleTextChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setInputText(event.target.value);
-  };
   // submit 버튼 handler
   const handleAddClick = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     event.preventDefault();
     if (inputText) {
-      dispatch(setTodayList(inputText)); // item TodayList store에 저장
-      setInputText("");
+      dispatch(setTodayList(inputText.value)); // item TodayList store에 저장
+      inputText.setValue("");
     }
   };
 
@@ -62,7 +59,7 @@ const AddList = () => {
     // form 태그
     <AddListContainer>
       <span className="add-box-text">할 일 추가 : </span>
-      <input className="add-input" value={inputText} onChange={(e) => handleTextChange(e)} />
+      <input className="add-input" {...inputText} />
       <button className="add-button" onClick={(e) => handleAddClick(e)}>
         <IoMdAddCircleOutline className="add-button-img" />
       </button>
