@@ -1,5 +1,16 @@
 # typescript로 만들어보는 TodoList입니다!
 
+### 배포 링크
+
+    https://todolist-75cfc.web.app/
+
+### test용 계정
+
+    ID : kim@google.com
+    password : qwe123
+
+<br/>
+
 # 기능설명
 
 ## 메인 페이지
@@ -10,11 +21,6 @@
 메인페이지에서는 로그인을 할 수 있습니다.<br/>
 계정이 없으면 회원가입 버튼을 눌러 회원가입을 합니다. 이메일, 비밀번호만 입력하면 됩니다.<br/>
 로그인, 회원가입은 Firebase Auth 빌드를 기반으로 만들었습니다. <br/>
-
-### test용 계정
-
-    ID : kim@google.com
-    password : qwe123
 
 <br/>
 
