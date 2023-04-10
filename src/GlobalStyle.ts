@@ -12,7 +12,7 @@ const GlobalStyle = createGlobalStyle`
       font-size: 14px;
     }
   }
-  @media screen and (max-width: 370px) {
+  @media screen and (max-width: 400px) {
     * {
       font-size: 12px;
     }

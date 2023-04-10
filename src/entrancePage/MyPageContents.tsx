@@ -18,6 +18,7 @@ const MyPageContentsContainer = styled.div`
   @media screen and (max-width: 600px) {
     width: 100%;
     height: 70%;
+    font-size: 1.2em;
   }
   .hello {
     font-size: 2em;

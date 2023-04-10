@@ -19,7 +19,6 @@ const TodayListContainer = styled.ul`
   background-color: #fff4e0;
   position: relative;
   padding-left: 0;
-
   .list-box {
     width: 70%;
     height: 70%;
@@ -29,6 +28,11 @@ const TodayListContainer = styled.ul`
     padding: 50px;
     overflow: auto;
     border-radius: 0 0 10px 10px;
+    @media screen and (max-width: 600px) {
+      width: 100%;
+      height: 60%;
+      padding: 5% 5% 10% 0;
+    }
     &::-webkit-scrollbar {
       display: none;
     }
@@ -53,6 +57,11 @@ const TodayListContainer = styled.ul`
       transform: scale(1.1);
       transition: all 0.2s;
       border: 3px solid #620653;
+    }
+    @media screen and (max-width: 600px) {
+      width: 20%;
+      bottom: 2%;
+      right: 2%;
     }
   }
 `;

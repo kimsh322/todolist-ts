@@ -28,6 +28,8 @@ const ItemLi = styled.li`
   justify-content: center;
   padding: 0.2em 0;
   animation: ${({ isRemove }: StyleProps) => (isRemove ? "flipOutX" : "flipInX")} 0.5s;
+  @media screen and (max-width: 600px) {
+  }
   .text-box {
     display: flex;
     width: 80%;

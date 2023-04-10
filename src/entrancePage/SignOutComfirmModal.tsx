@@ -39,6 +39,11 @@ const ModalView = styled.div`
   box-shadow: 2px 3px 5px 0;
   border-radius: 10px;
   padding: 1%;
+  @media screen and (max-width: 600px) {
+    width: 65%;
+    height: 30%;
+    font-size: 1.5em;
+  }
   .message {
     font-size: 1.2em;
     line-height: 150%;

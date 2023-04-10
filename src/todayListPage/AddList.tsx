@@ -12,9 +12,17 @@ const AddListContainer = styled.form`
   height: 10%;
   background-color: #b46060;
   border-radius: 10px 10px 0 0;
+  @media screen and (max-width: 600px) {
+    width: 100%;
+    height: 10%;
+    margin-top: 2%;
+  }
   .add-box-text {
     margin-left: 1em;
     font-size: 1.8em;
+    @media screen and (max-width: 600px) {
+      margin-left: 1%;
+    }
   }
   .add-input {
     width: 60%;
@@ -39,6 +47,10 @@ const AddListContainer = styled.form`
     }
     &:active {
       border: #808080 inset 3px;
+    }
+    @media screen and (max-width: 600px) {
+      margin-right: 1%;
+      width: 12%;
     }
   }
 `;

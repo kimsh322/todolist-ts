@@ -3,6 +3,22 @@ import { useAppDispatch, useAppSelector } from "../store/reduxHooks";
 import { useEffect, useRef, useState } from "react";
 import { updateTodayList } from "../store/itemSlice";
 
+const ModalBackdrop = styled.div`
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(128, 128, 128, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  z-index: 2;
+`;
+
 const EditItemForm = styled.form`
   display: flex;
   flex-direction: column;
@@ -19,12 +35,19 @@ const EditItemForm = styled.form`
   padding: 1% 1%;
   border-radius: 5px;
   z-index: 10;
+  @media screen and (max-width: 600px) {
+    width: 50vw;
+    height: 30vh;
+  }
   .edit-input {
     font-size: 1.5em;
     width: 100%;
     height: 70%;
     overflow-y: scroll;
     resize: none;
+    @media screen and (max-width: 600px) {
+      font-size: 2em;
+    }
   }
   .edit-button {
     font-size: 1.2em;
@@ -34,6 +57,10 @@ const EditItemForm = styled.form`
     background-color: #b46060;
     color: white;
     cursor: pointer;
+    @media screen and (max-width: 600px) {
+      width: 40%;
+      font-size: 1.5em;
+    }
   }
 `;
 
@@ -72,18 +99,20 @@ const EditItem = ({ listKey, setIsEditFormOpen }: Props) => {
     setIsEditFormOpen(false);
   };
   return (
-    <EditItemForm>
-      <textarea
-        ref={inputRef}
-        className="edit-input"
-        onClick={(e) => e.stopPropagation()}
-        value={value}
-        onChange={(e) => handleChange(e)}
-      ></textarea>
-      <button className="edit-button" onClick={(e) => handleEdit(e)}>
-        수정하기
-      </button>
-    </EditItemForm>
+    <ModalBackdrop onClick={() => setIsEditFormOpen(false)}>
+      <EditItemForm onClick={(e) => e.stopPropagation()}>
+        <textarea
+          ref={inputRef}
+          className="edit-input"
+          onClick={(e) => e.stopPropagation()}
+          value={value}
+          onChange={(e) => handleChange(e)}
+        ></textarea>
+        <button className="edit-button" onClick={(e) => handleEdit(e)}>
+          수정하기
+        </button>
+      </EditItemForm>
+    </ModalBackdrop>
   );
 };
 
