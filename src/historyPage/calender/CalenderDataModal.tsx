@@ -35,6 +35,9 @@ const ModalView = styled.div`
   color: black;
   box-shadow: 2px 3px 5px 0;
   border-radius: 10px;
+  @media screen and (max-width: 600px) {
+    width: 80%;
+  }
   .list-box {
     padding: 5%;
     width: 100%;
@@ -52,6 +55,9 @@ const ModalView = styled.div`
       margin-bottom: 1%;
       .list-text {
         width: 85%;
+        @media screen and (max-width: 600px) {
+          font-size: 1em;
+        }
       }
       .done {
         color: green;

@@ -22,6 +22,11 @@ const GlobalStyle = createGlobalStyle`
       font-size: 10px;
     }
   }
+  @media screen and (max-height: 500px) {
+    * {
+      font-size: 8px;
+    }
+  }
   @font-face {
     font-family: 'KOTRAHOPE';
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2110@1.0/KOTRAHOPE.woff2') format('woff2');

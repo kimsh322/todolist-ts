@@ -9,6 +9,9 @@ const WeekContainer = styled.div`
   padding: 0 1%;
   margin-left: 0;
   border-radius: 5px;
+  @media screen and (max-width: 600px) {
+    width: 100%;
+  }
   .week {
     width: 13%;
     display: flex;

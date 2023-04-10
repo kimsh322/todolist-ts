@@ -11,15 +11,12 @@ const CalenderHeaderContainer = styled.div`
   width: 90%;
   height: 10%;
   border-radius: 10px;
-
+  @media screen and (max-width: 600px) {
+    width: 100%;
+    height: 10%;
+  }
   .month {
     font-size: 3.3em;
-  }
-
-  @media screen and (max-width: 900px) {
-    .month {
-      font-size: 2.2em;
-    }
   }
   .year-box {
     position: absolute;
@@ -27,6 +24,12 @@ const CalenderHeaderContainer = styled.div`
     top: 40%;
     font-size: 1.8em;
     display: flex;
+    @media screen and (max-width: 600px) {
+      left: 3%;
+      .year {
+        font-size: 1.5em;
+      }
+    }
   }
   .date {
     margin: 0 6%;
@@ -44,6 +47,9 @@ const CalenderHeaderContainer = styled.div`
     cursor: pointer;
     .left-arrow {
       font-size: 3.5em;
+      @media screen and (max-width: 600px) {
+        margin-top: 20%;
+      }
     }
   }
   .next-month {
@@ -54,6 +60,9 @@ const CalenderHeaderContainer = styled.div`
     cursor: pointer;
     .right-arrow {
       font-size: 3.5em;
+      @media screen and (max-width: 600px) {
+        margin-top: 20%;
+      }
     }
   }
 `;

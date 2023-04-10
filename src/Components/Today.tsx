@@ -22,6 +22,9 @@ const TodayContainer = styled.div`
   @media screen and (max-height: 700px) {
     height: 12%;
   }
+  @media screen and (max-height: 500px) {
+    height: 15%;
+  }
   .top {
     display: flex;
     justify-content: center;

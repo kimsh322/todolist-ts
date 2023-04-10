@@ -13,6 +13,10 @@ const DaysContainer = styled.div`
   flex-direction: column;
   width: 90%;
   height: 80%;
+  @media screen and (max-width: 600px) {
+    width: 100%;
+    height: 70%;
+  }
   .week {
     margin-left: 0.3%;
     display: flex;

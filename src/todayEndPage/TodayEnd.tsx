@@ -23,6 +23,9 @@ const TodayEndContainer = styled.div`
   height: 100%;
   background-color: #fff4e0;
   position: relative;
+  @media screen and (max-width: 600px) {
+    background-color: #97deff;
+  }
   .list-box {
     width: 70%;
     height: 50%;
@@ -35,6 +38,11 @@ const TodayEndContainer = styled.div`
     &::-webkit-scrollbar {
       display: none;
     }
+    @media screen and (max-width: 600px) {
+      width: 100%;
+      padding-left: 0%;
+      padding-right: 10%;
+    }
   }
   .textarea-container {
     width: 70%;
@@ -43,6 +51,9 @@ const TodayEndContainer = styled.div`
     flex-direction: column;
     background-color: #62cdff;
     border-radius: 0 0 10px 10px;
+    @media screen and (max-width: 600px) {
+      width: 100%;
+    }
     .memo-label {
       height: 20%;
       font-size: 2.5em;
@@ -54,6 +65,9 @@ const TodayEndContainer = styled.div`
       background-color: #f6f1f1;
       font-size: 1.5em;
       resize: none;
+      @media screen and (max-width: 600px) {
+        font-size: 2em;
+      }
     }
   }
   .todayend-submit {
@@ -72,6 +86,10 @@ const TodayEndContainer = styled.div`
       transform: scale(1.1);
       transition: all 0.2s;
       border: 3px solid #620653;
+    }
+    @media screen and (max-width: 600px) {
+      width: 20%;
+      right: 0;
     }
   }
 `;

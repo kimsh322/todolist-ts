@@ -35,6 +35,7 @@ const HeaderContainer = styled.div`
     @media screen and (max-width: 600px) {
       bottom: 30%;
       left: 5%;
+      border-radius: 0;
     }
   }
 

@@ -29,6 +29,7 @@ const ItemLi = styled.li`
   padding: 0.2em 0;
   animation: ${({ isRemove }: StyleProps) => (isRemove ? "flipOutX" : "flipInX")} 0.5s;
   @media screen and (max-width: 600px) {
+    margin-left: 20px;
   }
   .text-box {
     display: flex;
@@ -36,12 +37,20 @@ const ItemLi = styled.li`
     align-items: center;
     margin-left: 10px;
     font-size: 1.8em;
+    @media screen and (max-width: 600px) {
+      height: 100%;
+      font-size: 2em;
+    }
   }
   .edit {
     position: absolute;
     right: 7.5%;
     font-size: 1.5em;
     cursor: pointer;
+    @media screen and (max-width: 600px) {
+      font-size: 2em;
+      right: 10%;
+    }
   }
   .remove {
     font-size: 1.5em;
@@ -51,6 +60,9 @@ const ItemLi = styled.li`
     right: 1%;
     &:hover {
       cursor: pointer;
+    }
+    @media screen and (max-width: 600px) {
+      font-size: 2em;
     }
   }
 `;
