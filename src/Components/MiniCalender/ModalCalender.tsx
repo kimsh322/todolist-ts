@@ -32,6 +32,10 @@ const ModalView = styled.div`
   border-radius: 20px;
   color: black;
   box-shadow: 2px 3px 5px 0;
+  @media screen and (max-width: 600px) {
+    width: 70%;
+    height: 35%;
+  }
 `;
 
 interface Props {

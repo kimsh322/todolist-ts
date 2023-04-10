@@ -8,11 +8,30 @@ const WeatherContainer = styled.div`
   height: 100%;
   padding: 3% 0 0 3%;
   background-color: #ba90c6;
+  @media screen and (max-width: 600px) {
+    flex-direction: column;
+    width: 100%;
+    height: 30%;
+    position: relative;
+    .weather-text {
+      width: 30%;
+      font-size: 2em;
+    }
+  }
   .weather-img {
     width: 100%;
+    @media screen and (max-width: 600px) {
+      position: absolute;
+      width: 50%;
+      top: 0;
+      left: 20%;
+    }
   }
   .weather-main {
     font-size: 1.5em;
+    @media screen and (max-width: 600px) {
+      font-size: 2em;
+    }
   }
   .weather-temp {
     font-size: 2em;

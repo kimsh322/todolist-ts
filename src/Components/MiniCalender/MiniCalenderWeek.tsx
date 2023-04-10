@@ -14,9 +14,11 @@ const WeekContainer = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    /* border: 0.3px solid black; */
     border-radius: 5px;
     background-color: #ffbf9b;
+    @media screen and (max-width: 600px) {
+      font-size: 1.3em;
+    }
   }
 `;
 

@@ -13,6 +13,14 @@ const CreateIdForm = styled.form`
   align-items: center;
   width: 80%;
   height: 80%;
+  @media screen and (max-width: 600px) {
+    h2 {
+      font-size: 2em;
+    }
+    span {
+      font-size: 1.2em;
+    }
+  }
   .input-box {
     display: flex;
     flex-direction: column;

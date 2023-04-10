@@ -16,9 +16,9 @@ const CalenderHeaderContainer = styled.div`
     font-size: 1.2em;
   }
 
-  @media screen and (max-width: 900px) {
+  @media screen and (max-width: 600px) {
     .month {
-      font-size: 0.6em;
+      font-size: 1.5em;
     }
   }
   .year-box {
@@ -44,6 +44,9 @@ const CalenderHeaderContainer = styled.div`
     justify-content: center;
     border: none;
     cursor: pointer;
+    @media screen and (max-width: 600px) {
+      margin-top: 1%;
+    }
   }
 `;
 

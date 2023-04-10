@@ -36,6 +36,11 @@ const ModalView = styled.div`
   box-shadow: 2px 3px 5px 0;
   border-radius: 10px;
   padding: 1%;
+  @media screen and (max-width: 600px) {
+    width: 65%;
+    height: 30%;
+    font-size: 1.5em;
+  }
   .message {
     font-size: 1.2em;
     line-height: 150%;
@@ -63,7 +68,10 @@ const SignInFailModal = ({ setIsFailModalOpen }: Props) => {
     <ModalContainer>
       <ModalBackdrop>
         <ModalView>
-          <span className="message">유효하지 않은 아이디이거나 비밀번호가 잘못되었습니다!</span>
+          <span className="message">
+            유효하지 않은 아이디이거나 <br />
+            비밀번호가 잘못되었습니다!
+          </span>
           <button className="confirm" onClick={closeModalHandler}>
             확 인
           </button>

@@ -15,6 +15,10 @@ const MyPageContentsContainer = styled.div`
   padding: 3%;
   background-image: url(${springImg});
   background-size: cover;
+  @media screen and (max-width: 600px) {
+    width: 100%;
+    height: 70%;
+  }
   .hello {
     font-size: 2em;
     margin-bottom: 10%;
@@ -35,6 +39,11 @@ const MyPageContentsContainer = styled.div`
     border-radius: 10px;
     cursor: pointer;
     background-color: #c0dbea;
+    @media screen and (max-width: 600px) {
+      bottom: 27%;
+      width: 40%;
+      height: 20%;
+    }
   }
 `;
 

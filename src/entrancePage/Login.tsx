@@ -27,10 +27,10 @@ const LoginContainer = styled.div`
     @media screen and (max-width: 600px) {
       width: 100%;
       height: 100%;
-      background-image: url(${catImg});
+      /* background-image: url(${catImg});
       background-size: 130% 75%;
-      background-position: 50% 0;
-      background-repeat: no-repeat;
+      background-position: 50% 5%;
+      background-repeat: no-repeat; */
       background-color: #68e9ff;
       border-radius: 0;
     }
