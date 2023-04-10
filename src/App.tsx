@@ -25,6 +25,9 @@ const MainContainer = styled.div`
     border: 2px solid black;
     border-radius: 0 0 10px 10px;
     overflow: hidden;
+    @media screen and (max-width: 900px) {
+      border-radius: 0;
+    }
   }
   .fade-enter {
     opacity: 0;
