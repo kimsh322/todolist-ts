@@ -1,5 +1,8 @@
 # typescript로 만들어보는 TodoList입니다!
 
+    Typescript로 만들어보는 TodoList 애플리케이션입니다!
+    모바일 반응형(width : 600px) 으로도 적용시켜보았습니다!
+
 ### 배포 링크
 
     https://todolist-75cfc.web.app/
