@@ -1,7 +1,8 @@
 import styled from "styled-components";
 import { useAppDispatch, useAppSelector } from "../store/reduxHooks";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { updateTodayList } from "../store/itemSlice";
+import useInput from "../components/customhook/useInput";
 
 const ModalBackdrop = styled.div`
   position: fixed;
@@ -77,22 +78,18 @@ interface TodayList {
 const EditItem = ({ listKey, setIsEditFormOpen }: Props) => {
   const listItem = useAppSelector((state) => state.todayList).find((el) => el.key === listKey)!; // !로 undefined 제거
   const dispatch = useAppDispatch();
-  const [value, setValue] = useState<string>(listItem.value);
+  const [textBind] = useInput(listItem.value);
   const inputRef = useRef<HTMLTextAreaElement>(null);
   // Edit 창이 뜨면 바로 focus 되도록 해준다.
   useEffect(() => {
     inputRef.current?.focus();
   }, []);
 
-  const handleChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
-    setValue(event.target.value);
-  };
-
   const handleEdit = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     event.preventDefault();
     let newObj: TodayList = {
       key: listKey,
-      value,
+      value: textBind.value,
       done: false,
     };
     dispatch(updateTodayList(newObj));
@@ -101,13 +98,7 @@ const EditItem = ({ listKey, setIsEditFormOpen }: Props) => {
   return (
     <ModalBackdrop onClick={() => setIsEditFormOpen(false)}>
       <EditItemForm onClick={(e) => e.stopPropagation()}>
-        <textarea
-          ref={inputRef}
-          className="edit-input"
-          onClick={(e) => e.stopPropagation()}
-          value={value}
-          onChange={(e) => handleChange(e)}
-        ></textarea>
+        <textarea ref={inputRef} className="edit-input" {...textBind}></textarea>
         <button className="edit-button" onClick={(e) => handleEdit(e)}>
           수정하기
         </button>
