@@ -84,9 +84,12 @@ History 페이지에서 이전에 남긴 todolist와 메모를 확인할 수 있
 Navbar를 통해서 다른페이지로 이동할 수 있습니다.<br/>
 Header 오른쪽의 버튼을 누르면 미니 달력을 볼 수 있습니다.<br/>
 
-|                                          메인페이지                                           |                                          마이페이지                                           |                                           todolist                                            |
-| :-------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------: |
-| <img src="./readmeImg/mobile_main.png" width="250px" height="440px"  alt="mobile_main"></img> | <img src="./readmeImg/mobile_main.png" width="250px" height="440px"  alt="mobile_main"></img> | <img src="./readmeImg/mobile_main.png" width="250px" height="440px"  alt="mobile_main"></img> |
+|                                              메인페이지                                               |                                             마이페이지                                              |                                               todolist                                                |
+| :---------------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------: |
+|     <img src="./readmeImg/mobile_main.png" width="250px" height="440px"  alt="mobile_main"></img>     |  <img src="./readmeImg/mobile_mypage.png" width="250px" height="440px"  alt="mobile_mypage"></img>  |   <img src="./readmeImg/mobile_todolist.png" width="250px" height="440px"  alt="mobile_main"></img>   |
+|                                               정산하기                                                |                                               history                                               |                                            이전데이터보기                                             |
+|                                                  :-:                                                  |                                                 :-:                                                 |                                                  :-:                                                  |
+| <img src="./readmeImg/mobile_todayend.png" width="250px" height="440px"  alt="mobile_todayend"></img> | <img src="./readmeImg/mobile_history.png" width="250px" height="440px"  alt="mobile_history"></img> | <img src="./readmeImg/mobile_datalist.png" width="250px" height="440px"  alt="mobile_datalist"></img> |
 
 모바일 반응형(max-width: 600px)으로도 적용시켜보았습니다.
 
