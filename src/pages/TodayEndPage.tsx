@@ -8,10 +8,10 @@ import { auth } from "../fireBase/firebaseApp";
 import { useEffect, useState } from "react";
 import Today from "../components/Today";
 import { useNavigate } from "react-router-dom";
-import Modal from "../components/modalContents/Modal";
+import Modal from "../components/modal-contents/Modal";
 import useModal from "../hooks/useModal";
-import { listStored, requireSignin } from "../components/modalContents/todayListModalContents";
-import { noListModalContents } from "../components/modalContents/todayListModalContents";
+import { listStored, requireSignin } from "../components/modal-contents/todayListModalContents";
+import { noListModalContents } from "../components/modal-contents/todayListModalContents";
 import useInput from "../hooks/useInput";
 
 const TodayEndPageContainer = styled.div`

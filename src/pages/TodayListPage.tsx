@@ -5,12 +5,12 @@ import AddList from "../components/todaylist-page/AddList";
 import Today from "../components/Today";
 import { format } from "date-fns";
 import { useNavigate } from "react-router-dom";
-import Modal from "../components/modalContents/Modal";
+import Modal from "../components/modal-contents/Modal";
 import useModal from "../hooks/useModal";
 import {
   confirmListModalContents,
   noListModalContents,
-} from "../components/modalContents/todayListModalContents";
+} from "../components/modal-contents/todayListModalContents";
 
 const TodayListPageContainer = styled.ul`
   display: flex;
