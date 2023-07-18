@@ -1,8 +1,8 @@
 import styled from "styled-components";
-import { useAppDispatch, useAppSelector } from "../store/reduxHooks";
+import { useAppDispatch, useAppSelector } from "../../store/reduxHooks";
 import { useEffect, useRef } from "react";
-import { updateTodayList } from "../store/itemSlice";
-import useInput from "../components/customhook/useInput";
+import { updateTodayList } from "../../store/itemSlice";
+import useInput from "../../hooks/useInput";
 
 const ModalBackdrop = styled.div`
   position: fixed;

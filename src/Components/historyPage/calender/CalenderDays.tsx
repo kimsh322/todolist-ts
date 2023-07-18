@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { startOfMonth, endOfMonth, startOfWeek, endOfWeek, addDays, format } from "date-fns";
 import { collection, getDocs } from "firebase/firestore";
-import { db, auth } from "../../fireBase/firebaseApp";
+import { db, auth } from "../../../fireBase/firebaseApp";
 import { useState, useEffect } from "react";
 import { onAuthStateChanged } from "firebase/auth";
 import { GiDisc } from "react-icons/gi";
@@ -163,9 +163,14 @@ const CalenderDays = ({ curMonth }: Props) => {
       let formatDate = format(day, "d");
       week.push(
         <div key={formatDate} className={`cell ${isToday(curMonth, day) ? "today" : ""}`}>
-          <span className={format(curMonth, "M") !== format(day, "M") ? "not-valid" : ""}>{formatDate}</span>
+          <span className={format(curMonth, "M") !== format(day, "M") ? "not-valid" : ""}>
+            {formatDate}
+          </span>
           {isKeyThere(formatDate, curMonth, day) ? (
-            <GiDisc className="exist-data-icon" onClick={() => handleDayClick(formatDate, curMonth)} />
+            <GiDisc
+              className="exist-data-icon"
+              onClick={() => handleDayClick(formatDate, curMonth)}
+            />
           ) : null}
         </div>
       );
@@ -182,7 +187,9 @@ const CalenderDays = ({ curMonth }: Props) => {
   return (
     <DaysContainer>
       {cells}
-      {isModalOpen ? <CalenderDataModal curDayData={curDayData} setIsModalOpen={setIsModalOpen} /> : null}
+      {isModalOpen ? (
+        <CalenderDataModal curDayData={curDayData} setIsModalOpen={setIsModalOpen} />
+      ) : null}
     </DaysContainer>
   );
 };

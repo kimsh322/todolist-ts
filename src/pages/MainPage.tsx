@@ -1,8 +1,8 @@
 import styled from "styled-components";
 import { useState, useEffect } from "react";
-import SignIn from "./SignIn";
-import Login from "./Login";
-import MyPage from "./MyPage";
+import SignIn from "../components/main-page/sign-in/SignIn";
+import Login from "../components/main-page/login-page/Login";
+import MyPage from "../components/main-page/my-page/MyPage";
 import { useAppDispatch, useAppSelector } from "../store/reduxHooks";
 import { changeToSignIn } from "../store/logSlice";
 import Today from "../components/Today";
@@ -38,7 +38,7 @@ const MainPage = () => {
     if (is_session) {
       dispatch(changeToSignIn());
     }
-  }, []);
+  }, [dispatch, is_session]);
 
   return (
     <MainPageContainer>

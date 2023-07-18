@@ -1,10 +1,10 @@
 import styled from "styled-components";
 import { collection, getDocs } from "firebase/firestore";
-import { db, auth } from "../fireBase/firebaseApp";
+import { db, auth } from "../../../fireBase/firebaseApp";
 import { onAuthStateChanged } from "firebase/auth";
 import { useEffect, useState } from "react";
 import SignOutConfirmModal from "./SignOutComfirmModal";
-import springImg from "../img/spring.jpg";
+import springImg from "../../../img/spring.jpg";
 
 const MyPageContentsContainer = styled.div`
   display: flex;
@@ -80,7 +80,9 @@ const MyPageContents = () => {
       <button className="sign-out" onClick={() => setIsConfirmSignOutModal(true)}>
         Sign out
       </button>
-      {isConfirmSignOutModal ? <SignOutConfirmModal setIsConfirmSignOutModal={setIsConfirmSignOutModal} /> : null}
+      {isConfirmSignOutModal ? (
+        <SignOutConfirmModal setIsConfirmSignOutModal={setIsConfirmSignOutModal} />
+      ) : null}
     </MyPageContentsContainer>
   );
 };

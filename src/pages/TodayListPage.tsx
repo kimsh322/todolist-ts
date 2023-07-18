@@ -1,15 +1,18 @@
 import styled from "styled-components";
 import { useAppSelector } from "../store/reduxHooks";
-import ListItem from "./ListItem";
-import AddList from "./AddList";
+import ListItem from "../components/todaylist-page/ListItem";
+import AddList from "../components/todaylist-page/AddList";
 import Today from "../components/Today";
 import { format } from "date-fns";
 import { useNavigate } from "react-router-dom";
 import Modal from "../components/modalContents/Modal";
-import useModal from "../components/customhook/useModal";
-import { confirmListModalContents, noListModalContents } from "../components/modalContents/todayListModalContents";
+import useModal from "../hooks/useModal";
+import {
+  confirmListModalContents,
+  noListModalContents,
+} from "../components/modalContents/todayListModalContents";
 
-const TodayListContainer = styled.ul`
+const TodayListPageContainer = styled.ul`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -66,7 +69,7 @@ const TodayListContainer = styled.ul`
   }
 `;
 
-const TodayList = () => {
+const TodayListPage = () => {
   const todayList = useAppSelector((state) => state.todayList);
   const confirmContents = useModal(confirmListModalContents);
   const noListContents = useModal(noListModalContents);
@@ -85,7 +88,7 @@ const TodayList = () => {
   };
 
   return (
-    <TodayListContainer>
+    <TodayListPageContainer>
       <Today />
       <AddList />
       <ul className="list-box">
@@ -98,8 +101,8 @@ const TodayList = () => {
       </button>
       <Modal {...confirmContents} />
       <Modal {...noListContents} />
-    </TodayListContainer>
+    </TodayListPageContainer>
   );
 };
 
-export default TodayList;
+export default TodayListPage;

@@ -57,7 +57,7 @@ const Weather = () => {
         const weatherMain = data.weather[0].main;
         setWeatherData({ currentTemp, weatherIcon, weatherMain });
       });
-  }, []);
+  }, [authorize]);
   return (
     <WeatherContainer>
       <h3 className="weather-text"> 현재 날씨</h3>

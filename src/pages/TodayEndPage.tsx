@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { format } from "date-fns";
-import ConfirmList from "./ConfirmList";
+import ConfirmList from "../components/todayend-page/ConfirmList";
 import { doc, setDoc } from "firebase/firestore";
 import { db } from "../fireBase/firebaseApp";
 import { onAuthStateChanged } from "firebase/auth";
@@ -9,12 +9,12 @@ import { useEffect, useState } from "react";
 import Today from "../components/Today";
 import { useNavigate } from "react-router-dom";
 import Modal from "../components/modalContents/Modal";
-import useModal from "../components/customhook/useModal";
+import useModal from "../hooks/useModal";
 import { listStored, requireSignin } from "../components/modalContents/todayListModalContents";
 import { noListModalContents } from "../components/modalContents/todayListModalContents";
-import useInput from "../components/customhook/useInput";
+import useInput from "../hooks/useInput";
 
-const TodayEndContainer = styled.div`
+const TodayEndPageContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -100,7 +100,7 @@ interface TodayList {
 }
 type TodayListArr = TodayList[];
 
-const TodayEnd = () => {
+const TodayEndPage = () => {
   const todayItems = localStorage.getItem(format(new Date(), "P"));
   const initialTodayConfirmList: TodayListArr = todayItems ? JSON.parse(todayItems) : [];
   const [memoBind] = useInput("");
@@ -150,7 +150,7 @@ const TodayEnd = () => {
   };
 
   return (
-    <TodayEndContainer>
+    <TodayEndPageContainer>
       <Today />
       <ul className="list-box">
         {todayConfirmList.length !== 0
@@ -179,8 +179,8 @@ const TodayEnd = () => {
       <Modal {...listStoredContents} />
       <Modal {...requireSigninContents} />
       <Modal {...noListContents} />
-    </TodayEndContainer>
+    </TodayEndPageContainer>
   );
 };
 
-export default TodayEnd;
+export default TodayEndPage;

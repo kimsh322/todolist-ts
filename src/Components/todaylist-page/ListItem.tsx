@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import { removeTodayList } from "../store/itemSlice";
-import { useAppDispatch } from "../store/reduxHooks";
+import { removeTodayList } from "../../store/itemSlice";
+import { useAppDispatch } from "../../store/reduxHooks";
 import "animate.css";
 import { useState } from "react";
 import { TbXboxX } from "react-icons/tb";

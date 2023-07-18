@@ -1,8 +1,8 @@
 import { createRef } from "react";
-import MainPage from "../entrancePage/MainPage";
-import TodayEnd from "../todayEndPage/TodayEnd";
-import TodayList from "../todayListPage/TodayList";
-import History from "../historyPage/History";
+import MainPage from "../pages/MainPage";
+import TodayEndPage from "../pages/TodayEndPage";
+import TodayListPage from "../pages/TodayListPage";
+import HistoryPage from "../pages/HistoryPage";
 import { createBrowserRouter } from "react-router-dom";
 import App from "../App";
 
@@ -16,20 +16,20 @@ export const routes = [
   {
     path: "/todaylist",
     name: "오늘 할 일",
-    element: <TodayList />,
+    element: <TodayListPage />,
     nodeRef: createRef<HTMLDivElement>(),
   },
   {
     path: "/todayend",
     name: "정산하기",
-    element: <TodayEnd />,
+    element: <TodayEndPage />,
     nodeRef: createRef<HTMLDivElement>(),
   },
 
   {
     path: "/history",
     name: "History",
-    element: <History />,
+    element: <HistoryPage />,
     nodeRef: createRef<HTMLDivElement>(),
   },
 ];
